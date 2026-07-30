@@ -102,7 +102,7 @@
     <div class="site-loader-inner">
       <img src="images/newlogo.png" alt="לוגו חומוסיית סמי" class="site-loader-logo" width="1024" height="1024" decoding="async" />
       <div class="site-loader-spinner" aria-hidden="true"></div>
-      <p>טוענים לכם משהו טעים...</p>
+      <p data-i18n="loader.message">טוענים לכם משהו טעים...</p>
     </div>
   </div>
 
@@ -113,7 +113,7 @@
         <span class="brand-text">חומוסיית סמי</span>
       </a>
 
-      <span class="header-scroll-text">ממכר כמה שזה טעים</span>
+      <span class="header-scroll-text" data-i18n="header.slogan">ממכר כמה שזה טעים</span>
 
       <button class="menu-toggle" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="mainNav">
         <span></span>
@@ -122,11 +122,34 @@
       </button>
 
       <nav class="main-nav" id="mainNav" aria-label="ניווט ראשי">
-        <a href="#about">אודות</a>
-        <a href="#menu">תפריט</a>
-        <a href="#contact">צור קשר</a>
-        <a href="#hours">שעות פתיחה</a>
+        <a href="#about" data-i18n="nav.about">אודות</a>
+        <a href="#menu" data-i18n="nav.menu">תפריט</a>
+        <a href="#contact" data-i18n="nav.contact">צור קשר</a>
+        <a href="#hours" data-i18n="nav.hours">שעות פתיחה</a>
+
+        <div class="mobile-lang-selector" aria-label="בחירת שפה">
+          <p class="mobile-lang-label" data-i18n="lang.label">שפה</p>
+          <div class="mobile-lang-options">
+            <button type="button" class="lang-option" data-set-lang="he">🇮🇱 עברית</button>
+            <button type="button" class="lang-option" data-set-lang="en">🇬🇧 English</button>
+            <button type="button" class="lang-option" data-set-lang="ar">🇸🇦 العربية</button>
+            <button type="button" class="lang-option" data-set-lang="ru">🇷🇺 Русский</button>
+          </div>
+        </div>
       </nav>
+
+      <div class="lang-selector" id="langSelector">
+        <button type="button" class="lang-toggle" id="langToggle" aria-label="בחירת שפה" aria-expanded="false" aria-controls="langMenu">
+          <span aria-hidden="true">🌐</span>
+          <span id="activeLanguageLabel">עברית</span>
+        </button>
+        <div class="lang-menu" id="langMenu" role="menu">
+          <button type="button" class="lang-option" data-set-lang="he" role="menuitem">🇮🇱 עברית</button>
+          <button type="button" class="lang-option" data-set-lang="en" role="menuitem">🇬🇧 English</button>
+          <button type="button" class="lang-option" data-set-lang="ar" role="menuitem">🇸🇦 العربية</button>
+          <button type="button" class="lang-option" data-set-lang="ru" role="menuitem">🇷🇺 Русский</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -137,12 +160,12 @@
         <div class="hero-top-logo">
           <img src="images/newlogo.png" alt="לוגו חומוסיית סמי" width="1024" height="1024" loading="eager" fetchpriority="high" decoding="async" />
         </div>
-        <p class="eyebrow">ממכר כמה שזה טעים</p>
-        <h1>חומוסיית סמי</h1>
-        <p class="hero-subtitle">חומוס אמיתי, חומרי גלם איכותיים ואווירה שמרגישה כמו בית.</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">ממכר כמה שזה טעים</p>
+        <h1 data-i18n="hero.title">חומוסיית סמי</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">חומוס אמיתי, חומרי גלם איכותיים ואווירה שמרגישה כמו בית.</p>
         <div class="hero-actions">
-          <a href="#menu" class="btn btn-primary">לתפריט</a>
-          <a href="#contact" class="btn btn-secondary">בואו לבקר</a>
+          <a href="#menu" class="btn btn-primary" data-i18n="hero.ctaMenu">לתפריט</a>
+          <a href="#contact" class="btn btn-secondary" data-i18n="hero.ctaVisit">בואו לבקר</a>
         </div>
       </div>
     </section>
@@ -153,11 +176,11 @@
           <img src="images/3A8FC713-D32B-48F5-83E3-76E0AE8DF60F.PNG" alt="נאיף - השף של חומוסיית סמי" width="1254" height="1254" loading="lazy" decoding="async" />
         </div>
         <div class="chef-copy">
-          <p class="section-kicker">להכיר את הבעלים והשף</p>
-          <h2>הבעלים והשף — נאיף</h2>
-          <p>נאיף הוא גם הבעלים וגם השף של החומוסייה, מבשל מכל הלב ומאמין שחומרי גלם איכותיים, ירקות טריים, תבלינים מדויקים ותשומת לב לפרטים הקטנים הם מה שעושה את החומוס שלנו כל כך מיוחד.</p>
-          <p>בנוסף לנסיון רב השנים שיש לו במטבח, הוא מצטיין קורס pro-chef של בית הספר "דנון" בתל אביב.</p>
-          <p>ועכשיו בטח כולכם שואלים: "מי זה סמי?" אז סמי הוא אבא של נאיף, והוא דור שני של משפחה שעסקה בחומוס מאז שנת 1969.</p>
+          <p class="section-kicker" data-i18n="chef.kicker">להכיר את הבעלים והשף</p>
+          <h2 data-i18n="chef.title">הבעלים והשף — נאיף</h2>
+          <p data-i18n="chef.p1">נאיף הוא גם הבעלים וגם השף של החומוסייה, מבשל מכל הלב ומאמין שחומרי גלם איכותיים, ירקות טריים, תבלינים מדויקים ותשומת לב לפרטים הקטנים הם מה שעושה את החומוס שלנו כל כך מיוחד.</p>
+          <p data-i18n="chef.p2">בנוסף לנסיון רב השנים שיש לו במטבח, הוא מצטיין קורס pro-chef של בית הספר "דנון" בתל אביב.</p>
+          <p data-i18n="chef.p3">ועכשיו בטח כולכם שואלים: "מי זה סמי?" אז סמי הוא אבא של נאיף, והוא דור שני של משפחה שעסקה בחומוס מאז שנת 1969.</p>
         </div>
       </div>
     </section>
@@ -165,13 +188,13 @@
     <section class="section about" id="about">
       <div class="container about-grid">
         <div class="about-copy reveal">
-          <p class="section-kicker">הסיפור שלנו</p>
-          <h2>חומוס טוב מתחיל בדברים הפשוטים</h2>
-          <p>
+          <p class="section-kicker" data-i18n="about.kicker">הסיפור שלנו</p>
+          <h2 data-i18n="about.title">חומוס טוב מתחיל בדברים הפשוטים</h2>
+          <p data-i18n="about.p1">
             אצלנו מאמינים שחומוס טוב מתחיל מחומרי גלם איכותיים, הכנה טרייה מדי יום
             והמון אהבה למטבח.
           </p>
-          <p>
+          <p data-i18n="about.p2">
             אנו מגישים מנות טריות, עשירות בטעמים ובאווירה משפחתית, כדי שכל ביקור
             יהפוך לחוויה.
           </p>
@@ -179,13 +202,13 @@
           <div class="about-features">
             <div class="feature-card">
               <span>🌿</span>
-              <h3>חומרי גלם איכותיים</h3>
-              <p>טחינה משובחת, גרגירים מובחרים וירקות טריים.</p>
+              <h3 data-i18n="about.feature1Title">חומרי גלם איכותיים</h3>
+              <p data-i18n="about.feature1Text">טחינה משובחת, גרגירים מובחרים וירקות טריים.</p>
             </div>
             <div class="feature-card">
               <span>🥙</span>
-              <h3>מוכן במקום</h3>
-              <p>כל מנה מוכנה באהבה ומוגשת טרייה.</p>
+              <h3 data-i18n="about.feature2Title">מוכן במקום</h3>
+              <p data-i18n="about.feature2Text">כל מנה מוכנה באהבה ומוגשת טרייה.</p>
             </div>
           </div>
         </div>
@@ -193,7 +216,7 @@
         <div class="about-image reveal">
           <div class="image-badge">
             <strong>100%</strong>
-            <span>טרי כל יום</span>
+            <span data-i18n="about.badge">טרי כל יום</span>
           </div>
         </div>
       </div>
@@ -202,24 +225,24 @@
     <section class="section menu-section" id="menu">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="section-kicker">התפריט שלנו</p>
-          <h2>הטעמים של סמי</h2>
-          <p>בחרו קטגוריה וגלו את המנות שלנו.</p>
+          <p class="section-kicker" data-i18n="menu.kicker">התפריט שלנו</p>
+          <h2 data-i18n="menu.title">הטעמים של סמי</h2>
+          <p data-i18n="menu.subtitle">בחרו קטגוריה וגלו את המנות שלנו.</p>
         </div>
 
         <div class="review-note reveal">
           <span>⭐</span>
           <div>
-            <strong>אהבתם את התפריט?</strong>
-            <p>אתם יכולים להשאיר חוות דעת על חומוסיית סמי בגוגל ולהראות לכולם את מה שאהבתם.</p>
+            <strong data-i18n="menu.reviewStrong">אהבתם את התפריט?</strong>
+            <p data-i18n="menu.reviewText">אתם יכולים להשאיר חוות דעת על חומוסיית סמי בגוגל ולהראות לכולם את מה שאהבתם.</p>
           </div>
-          <a href="https://www.google.com/maps/place/Hummus+sami/@32.9697878,35.1461692,17z/data=!4m7!3m6!1s0x151dcc3f62f9e05f:0x9ec50d157203baf0!8m2!3d32.9697833!4d35.1487495!9m1!1b1" target="_blank" rel="noopener noreferrer">לחצו לדרוג</a>
+          <a href="https://www.google.com/maps/place/Hummus+sami/@32.9697878,35.1461692,17z/data=!4m7!3m6!1s0x151dcc3f62f9e05f:0x9ec50d157203baf0!8m2!3d32.9697833!4d35.1487495!9m1!1b1" target="_blank" rel="noopener noreferrer" data-i18n="menu.reviewLink">לחצו לדרוג</a>
         </div>
 
         <div class="category-tabs reveal" role="tablist" aria-label="קטגוריות תפריט">
-          <button class="category-btn active" data-category="hummus">ניגובים</button>
-          <button class="category-btn" data-category="sides">ליד החומוס</button>
-          <button class="category-btn" data-category="drinks">שתייה</button>
+          <button class="category-btn active" data-category="hummus" data-i18n="menu.categories.hummus">ניגובים</button>
+          <button class="category-btn" data-category="sides" data-i18n="menu.categories.sides">ליד החומוס</button>
+          <button class="category-btn" data-category="drinks" data-i18n="menu.categories.drinks">שתייה</button>
         </div>
 
         <div class="menu-grid" id="menuGrid"></div>
@@ -229,54 +252,53 @@
     <section class="section contact-section" id="contact">
       <div class="container contact-grid">
         <div class="contact-card reveal">
-          <p class="section-kicker">בואו לבקר</p>
-          <h2>מחכים לכם בחומוסיית סמי</h2>
+          <p class="section-kicker" data-i18n="contact.kicker">בואו לבקר</p>
+          <h2 data-i18n="contact.title">מחכים לכם בחומוסיית סמי</h2>
 
           <div class="contact-list">
             <div>
               <span class="contact-icon">📍</span>
-              <p><strong>כתובת</strong><br>מתחם תחנת דלק טן, בית העמק, 2511500</p>
+              <p><strong data-i18n="contact.addressLabel">כתובת</strong><br><span data-i18n="contact.addressText">מתחם תחנת דלק טן, בית העמק, 2511500</span></p>
             </div>
             <div>
               <span class="contact-icon">☎️</span>
-              <p><strong>טלפון</strong><br><a href="tel:+972509942222" aria-label="חייגו אלינו לחומוסיית סמי">050-994-2222</a></p>
+              <p><strong data-i18n="contact.phoneLabel">טלפון</strong><br><a href="tel:+972509942222" aria-label="חייגו אלינו לחומוסיית סמי">050-994-2222</a></p>
             </div>
             <div>
               <span class="contact-icon">✉️</span>
-              <p><strong>אימייל</strong><br><a href="mailto:Matanis.n@gmail.com">Matanis.n@gmail.com</a></p>
+              <p><strong data-i18n="contact.emailLabel">אימייל</strong><br><a href="mailto:Matanis.n@gmail.com">Matanis.n@gmail.com</a></p>
             </div>
             <div>
               <span class="contact-icon">🕒</span>
-              <p><strong>שעות פתיחה</strong><br>שני עד שבת: 08:30–16:00<br>ראשון: סגור</p>
+              <p><strong data-i18n="contact.hoursLabel">שעות פתיחה</strong><br><span data-i18n="contact.hoursLine1">שני עד שבת: 08:30–16:00</span><br><span data-i18n="contact.hoursLine2">ראשון: סגור</span></p>
             </div>
           </div>
 
           <div class="google-rating">
             <span class="rating-stars">★★★★★</span>
             <div>
-              <strong>4.9</strong> מתוך 5 · Google
+              <strong>4.9</strong> <span data-i18n="contact.ratingSuffix">מתוך 5 · Google</span>
             </div>
-            <a class="google-link" href="https://www.google.com/maps/place/Hummus+sami/@32.9697878,35.1461692,17z/data=!4m7!3m6!1s0x151dcc3f62f9e05f:0x9ec50d157203baf0!8m2!3d32.9697833!4d35.1487495!9m1!1b1" target="_blank" rel="noopener noreferrer">צפייה בכל הביקורות בגוגל</a>
+            <a class="google-link" href="https://www.google.com/maps/place/Hummus+sami/@32.9697878,35.1461692,17z/data=!4m7!3m6!1s0x151dcc3f62f9e05f:0x9ec50d157203baf0!8m2!3d32.9697833!4d35.1487495!9m1!1b1" target="_blank" rel="noopener noreferrer" data-i18n="contact.googleReviews">צפייה בכל הביקורות בגוגל</a>
           </div>
-
           <div class="reviews-slider" aria-label="חוות דעת גוגל">
             <button class="reviews-nav reviews-prev" type="button" aria-label="חוות דעת קודמת">‹</button>
             <div class="reviews-viewport" tabindex="0">
               <div class="reviews-track">
                 <article class="review-card" data-review-index="0">
                   <div class="review-stars" aria-label="5 מתוך 5 כוכבים">★★★★★</div>
-                  <p>השירות כאן מדהים, והחומוס טעים בטירוף. מומלץ לכל מי שרוצה חוויית אוכל אותנטית.</p>
-                  <span class="reviewer-name">דנה מ.</span>
+                  <p data-i18n="reviews.oneText">השירות כאן מדהים, והחומוס טעים בטירוף. מומלץ לכל מי שרוצה חוויית אוכל אותנטית.</p>
+                  <span class="reviewer-name" data-i18n="reviews.oneName">דנה מ.</span>
                 </article>
                 <article class="review-card" data-review-index="1">
                   <div class="review-stars" aria-label="5 מתוך 5 כוכבים">★★★★★</div>
-                  <p>טעים, נקי ומהר. בהחלט המקום הכי טוב לחומוס בסביבה, נחזור שוב בקרוב.</p>
-                  <span class="reviewer-name">יוסי נ.</span>
+                  <p data-i18n="reviews.twoText">טעים, נקי ומהר. בהחלט המקום הכי טוב לחומוס בסביבה, נחזור שוב בקרוב.</p>
+                  <span class="reviewer-name" data-i18n="reviews.twoName">יוסי נ.</span>
                 </article>
                 <article class="review-card" data-review-index="2">
                   <div class="review-stars" aria-label="5 מתוך 5 כוכבים">★★★★★</div>
-                  <p>אווירה חמה, צוות ידידותי והחומוס פשוט עף. מצאתי מקום חדש לבילוי משפחתי.</p>
-                  <span class="reviewer-name">אילנה ק.</span>
+                  <p data-i18n="reviews.threeText">אווירה חמה, צוות ידידותי והחומוס פשוט עף. מצאתי מקום חדש לבילוי משפחתי.</p>
+                  <span class="reviewer-name" data-i18n="reviews.threeName">אילנה ק.</span>
                 </article>
               </div>
             </div>
@@ -295,8 +317,8 @@
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
           <div class="map-overlay-actions">
-            <a class="map-action-btn" href="https://www.google.com/maps/place/Hummus+sami/@32.9697878,35.1461692,17z/data=!3m1!4b1!4m6!3m5!1s0x151dcc3f62f9e05f:0x9ec50d157203baf0!8m2!3d32.9697833!4d35.1487495!16s%2Fg%2F11fyllbnm2?entry=ttu&g_ep=EgoyMDI2MDcyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">ניווט ב-Google Maps</a>
-            <a class="map-action-btn" href="tel:+972509942222" aria-label="חייגו אלינו לחומוסיית סמי">חייגו אלינו</a>
+            <a class="map-action-btn" href="https://www.google.com/maps/place/Hummus+sami/@32.9697878,35.1461692,17z/data=!3m1!4b1!4m6!3m5!1s0x151dcc3f62f9e05f:0x9ec50d157203baf0!8m2!3d32.9697833!4d35.1487495!16s%2Fg%2F11fyllbnm2?entry=ttu&g_ep=EgoyMDI2MDcyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" data-i18n="contact.mapNav">ניווט ב-Google Maps</a>
+            <a class="map-action-btn" href="tel:+972509942222" aria-label="חייגו אלינו לחומוסיית סמי" data-i18n="contact.callCta">חייגו אלינו</a>
           </div>
         </div>
       </div>
@@ -305,26 +327,26 @@
 
   <a class="floating-call" href="tel:+972509942222" aria-label="חייגו אלינו לחומוסיית סמי">
     <span aria-hidden="true">☎</span>
-    <span>חייגו אלינו</span>
+    <span data-i18n="contact.callCta">חייגו אלינו</span>
   </a>
 
   <footer class="site-footer" id="hours">
     <div class="container footer-grid">
       <div>
-        <h3>חומוסיית סמי</h3>
-        <p>חומוס טרי, מנות נדיבות ואווירה משפחתית.</p>
+        <h3 data-i18n="footer.brandTitle">חומוסיית סמי</h3>
+        <p data-i18n="footer.brandText">חומוס טרי, מנות נדיבות ואווירה משפחתית.</p>
       </div>
 
       <div>
-        <h4>שעות פתיחה</h4>
+        <h4 data-i18n="footer.hoursTitle">שעות פתיחה</h4>
         <ul class="hours-list">
-          <li><span>ב׳–ש׳</span><span>08:30–16:00 או עד גמר המלאי</span></li>
-            <li><span>ראשון</span><span>סגור</span></li>
+          <li><span data-i18n="footer.hoursDays1">ב׳–ש׳</span><span data-i18n="footer.hoursTime1">08:30–16:00 או עד גמר המלאי</span></li>
+            <li><span data-i18n="footer.hoursDays2">ראשון</span><span data-i18n="footer.hoursTime2">סגור</span></li>
         </ul>
       </div>
 
       <div>
-        <h4>עקבו אחרינו</h4>
+        <h4 data-i18n="footer.follow">עקבו אחרינו</h4>
         <div class="social-links">
           <a href="https://www.instagram.com/hummus_sami" aria-label="אינסטגרם" target="_blank" rel="noopener noreferrer">
             <img src="images/instagram.png" alt="Instagram" width="512" height="512" loading="lazy" decoding="async" />
@@ -340,7 +362,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© <span id="year"></span> חומוסיית סמי. כל הזכויות שמורות.</p>
+      <p>© <span id="year"></span> <span data-i18n="footer.copyright">חומוסיית סמי. כל הזכויות שמורות.</span></p>
     </div>
   </footer>
 
