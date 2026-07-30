@@ -40,9 +40,10 @@ const content = {
       kicker: "התפריט שלנו",
       title: "הטעמים של סמי",
       subtitle: "בחרו קטגוריה וגלו את המנות שלנו.",
-      reviewStrong: "אהבתם את התפריט?",
-      reviewText: "אתם יכולים להשאיר חוות דעת על חומוסיית סמי בגוגל ולהראות לכולם את מה שאהבתם.",
-      reviewLink: "לחצו לדרוג",
+      reviewStrong: "נהניתם אצלנו?",
+      reviewText: "החוויה שלכם חשובה לנו",
+      reviewSoft: "נשמח לשמוע מכם",
+      reviewLink: "שתפו אותנו",
       categories: { hummus: "ניגובים", sides: "ליד החומוס", drinks: "שתייה" }
     },
     contact: {
@@ -150,9 +151,10 @@ const content = {
       kicker: "Our Menu",
       title: "Sami's Flavors",
       subtitle: "Choose a category and discover our dishes.",
-      reviewStrong: "Enjoyed the menu?",
-      reviewText: "You can leave a review for Hummus Sami on Google and share your experience.",
-      reviewLink: "Rate Us",
+      reviewStrong: "Enjoyed your visit?",
+      reviewText: "Your experience matters to us",
+      reviewSoft: "We’d love to hear from you",
+      reviewLink: "Share your thoughts",
       categories: { hummus: "Hummus Dishes", sides: "Sides", drinks: "Drinks" }
     },
     contact: {
@@ -260,9 +262,10 @@ const content = {
       kicker: "قائمتنا",
       title: "نكهات سمي",
       subtitle: "اختاروا فئة واكتشفوا أطباقنا.",
-      reviewStrong: "أعجبتكم القائمة؟",
-      reviewText: "يمكنكم ترك تقييم لحمصية سمي على Google ومشاركة تجربتكم.",
-      reviewLink: "قيّمونا",
+      reviewStrong: "استمتعتم بزيارتكم؟",
+      reviewText: "تجربتكم تهمنا",
+      reviewSoft: "يسعدنا سماع رأيكم",
+      reviewLink: "شاركونا رأيكم",
       categories: { hummus: "أطباق الحمص", sides: "إلى جانب الحمص", drinks: "مشروبات" }
     },
     contact: {
@@ -370,9 +373,10 @@ const content = {
       kicker: "Наше меню",
       title: "Вкусы Сами",
       subtitle: "Выберите категорию и откройте наши блюда.",
-      reviewStrong: "Понравилось меню?",
-      reviewText: "Вы можете оставить отзыв о Hummus Sami в Google и поделиться впечатлением.",
-      reviewLink: "Оценить",
+      reviewStrong: "Вам понравилось у нас?",
+      reviewText: "Ваши впечатления важны для нас",
+      reviewSoft: "Будем рады вашему отзыву",
+      reviewLink: "Поделиться впечатлением",
       categories: { hummus: "Блюда с хумусом", sides: "К хумусу", drinks: "Напитки" }
     },
     contact: {
