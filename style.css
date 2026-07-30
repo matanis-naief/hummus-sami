@@ -161,7 +161,7 @@ iframe {
 .site-header.scrolled {
   background: rgba(246, 240, 230, 0.84);
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 26px rgba(42, 39, 28, 0.1);
+  box-shadow: 0 8px 26px rgba(42, 39, 28, 0.12);
 }
 
 .nav-wrap {
@@ -300,7 +300,8 @@ iframe {
   box-shadow: 0 12px 20px rgba(43, 43, 32, 0.14);
   padding: 0.35rem;
   opacity: 0;
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(0.98);
+  transform-origin: top right;
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 20;
@@ -308,7 +309,7 @@ iframe {
 
 .lang-selector.open .lang-menu {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   pointer-events: auto;
 }
 
@@ -378,6 +379,7 @@ iframe {
   color: var(--white);
   max-width: 780px;
   padding-top: 3.4rem;
+  padding-bottom: 4.8rem;
 }
 
 .hero-top-logo {
@@ -404,6 +406,9 @@ iframe {
 
 .eyebrow {
   margin-top: 0;
+  font-size: clamp(1.05rem, 5vw, 1.45rem);
+  line-height: 1.35;
+  text-shadow: 0 2px 10px rgba(10, 9, 6, 0.38);
 }
 
 .hero h1,
@@ -433,6 +438,49 @@ iframe {
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.85rem;
+}
+
+.hero-scroll-control {
+  position: absolute;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: 44px;
+  height: 44px;
+  display: inline-grid;
+  place-items: center;
+  z-index: 2;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: rgba(248, 239, 221, 0.92);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.hero-scroll-icon {
+  width: 18px;
+  height: 18px;
+  border-inline-end: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  animation: scrollNudge 1.6s ease-in-out infinite;
+}
+
+.hero-scroll-control:hover,
+.hero-scroll-control:focus,
+.hero-scroll-control:active {
+  background: transparent;
+  box-shadow: none;
+}
+
+.hero-scroll-control:hover {
+  color: #fff9ec;
+  transform: translateX(-50%) translateY(2px);
+}
+
+.hero-scroll-control:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--gold) 78%, var(--white));
+  outline-offset: 4px;
 }
 
 .btn {
@@ -590,6 +638,31 @@ iframe {
   margin: 0 auto 2rem;
 }
 
+.section-heading h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 0.45rem;
+}
+
+.section-heading h2::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 50%;
+  bottom: 0;
+  width: 64px;
+  height: 2px;
+  transform: translateX(-50%) scaleX(0.15);
+  transform-origin: center;
+  background: linear-gradient(90deg, rgba(199, 164, 93, 0), rgba(199, 164, 93, 0.9), rgba(88, 99, 59, 0.7), rgba(199, 164, 93, 0));
+  opacity: 0.7;
+  transition: transform 0.55s ease, opacity 0.55s ease;
+}
+
+.section-heading.visible h2::after {
+  transform: translateX(-50%) scaleX(1);
+  opacity: 1;
+}
+
 .review-note {
   max-width: 440px;
   margin: 0 auto 1.4rem;
@@ -703,6 +776,10 @@ iframe {
   box-shadow: 0 7px 18px rgba(63, 54, 38, 0.07), 0 18px 28px rgba(63, 54, 38, 0.08);
   padding: 0.85rem 0.9rem;
   align-items: start;
+}
+
+.menu-item.reveal {
+  transition-delay: calc(var(--stagger, 0) * 70ms);
 }
 
 .menu-item-body {
@@ -867,7 +944,11 @@ iframe {
 .reviews-track {
   --cards-per-view: 1;
   display: flex;
-  transition: transform 0.45s ease;
+  transition: transform 0.45s ease, opacity 0.32s ease;
+}
+
+.reviews-track.is-transitioning {
+  opacity: 0.8;
 }
 
 .review-card {
@@ -931,11 +1012,13 @@ iframe {
   border: 1px solid rgba(255, 255, 255, 0.46);
   background: rgba(255, 255, 255, 0.32);
   cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .reviews-dot.active {
   background: var(--gold);
   border-color: var(--gold);
+  transform: scale(1.08);
 }
 
 .map-placeholder {
@@ -999,6 +1082,7 @@ iframe {
   color: #4e5a34;
   background: linear-gradient(180deg, #f4e9d1 0%, #ebdbba 100%);
   border: 1px solid rgba(199, 164, 93, 0.55);
+  transition: transform 0.2s ease;
 }
 
 .action-content {
@@ -1035,6 +1119,8 @@ iframe {
   font-weight: 700;
   box-shadow: 0 12px 20px rgba(16, 30, 13, 0.2);
   border: 1px solid rgba(88, 99, 59, 0.3);
+  transform: scale(1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .floating-call span[aria-hidden="true"] {
@@ -1110,12 +1196,52 @@ iframe {
 .reveal {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.review-note.reveal {
+  transform: translateY(14px) scale(0.985);
+}
+
+.review-note.reveal.visible {
+  transform: translateY(0) scale(1);
+}
+
+body.is-loading .hero-anim-logo,
+body.is-loading .hero-anim-slogan,
+body.is-loading .hero-anim-title,
+body.is-loading .hero-anim-actions,
+body.is-loading .hero-scroll-control {
+  opacity: 0;
+}
+
+body.is-loaded .hero-anim-logo {
+  animation: heroFadeScaleIn 0.6s ease-out both;
+}
+
+body.is-loaded .hero-anim-slogan {
+  animation: heroFadeUpIn 0.5s ease-out 0.15s both;
+}
+
+body.is-loaded .hero-anim-title {
+  animation: heroFadeUpIn 0.55s ease-out 0.22s both;
+}
+
+body.is-loaded .hero-anim-actions {
+  animation: heroFadeUpIn 0.52s ease-out 0.3s both;
+}
+
+body.is-loaded .hero-scroll-control {
+  animation: heroFadeUpIn 0.45s ease-out 0.35s both;
+}
+
+body.is-loaded .floating-call {
+  animation: floatingPulseOnce 0.9s ease 0.72s 1;
 }
 
 @media (hover: hover) {
@@ -1141,6 +1267,14 @@ iframe {
   .contact-action-card:hover {
     border-color: rgba(199, 164, 93, 0.56);
     box-shadow: 0 9px 18px rgba(44, 40, 29, 0.12);
+  }
+
+  .contact-action-card:hover .action-icon {
+    transform: translateY(-2px);
+  }
+
+  .floating-call:hover {
+    transform: scale(1.02);
   }
 }
 
@@ -1235,6 +1369,19 @@ iframe {
     padding: 3.2rem 0;
   }
 
+  .reveal {
+    transform: translateY(12px);
+    transition-duration: 0.46s;
+  }
+
+  .menu-item {
+    transition-duration: 0.42s;
+  }
+
+  .hero-scroll-control {
+    bottom: max(8px, env(safe-area-inset-bottom));
+  }
+
   .review-note {
     max-width: 100%;
     padding: 1.35rem 1.25rem;
@@ -1287,6 +1434,13 @@ iframe {
   .hero-top-logo {
     width: min(285px, 76vw);
     margin-top: 11vh;
+  }
+
+  .eyebrow {
+    font-size: clamp(1.05rem, 5vw, 1.45rem);
+    line-height: 1.38;
+    margin-bottom: 0.7rem;
+    padding-inline: 0.3rem;
   }
 
   .hero-actions {
@@ -1347,6 +1501,10 @@ iframe {
     font-size: 0.8rem;
   }
 
+  .eyebrow {
+    font-size: clamp(1.05rem, 5vw, 1.45rem);
+  }
+
   .contact-card,
   .review-note {
     padding: 0.95rem;
@@ -1363,6 +1521,10 @@ iframe {
   .review-note p,
   .review-note-soft {
     font-size: 0.88rem;
+  }
+
+  .hero-scroll-control {
+    bottom: max(6px, env(safe-area-inset-bottom));
   }
 
   .section-heading h2,
@@ -1407,6 +1569,40 @@ iframe {
     animation: none;
   }
 
+  .reveal,
+  .reveal.visible,
+  .menu-item,
+  .review-note.reveal,
+  .review-note.reveal.visible,
+  .hero-anim-logo,
+  .hero-anim-slogan,
+  .hero-anim-title,
+  .hero-anim-actions,
+  .hero-scroll-control,
+  .floating-call {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-scroll-control {
+    transition: none !important;
+  }
+
+  .hero-scroll-icon {
+    animation: none !important;
+  }
+
+  .reviews-track,
+  .reviews-dot,
+  .lang-menu,
+  .main-nav,
+  .btn,
+  .contact-action-card,
+  .action-icon {
+    transition-duration: 0.001ms !important;
+  }
+
   .review-card,
   .menu-item,
   .map-placeholder,
@@ -1438,5 +1634,60 @@ iframe {
   }
   100% {
     background-position: -200% 0;
+  }
+}
+
+@keyframes heroFadeScaleIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroFadeUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes menuCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollNudge {
+  0%,
+  100% {
+    transform: rotate(45deg) translateY(-2px);
+  }
+  50% {
+    transform: rotate(45deg) translateY(2px);
+  }
+}
+
+@keyframes floatingPulseOnce {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
   }
 }

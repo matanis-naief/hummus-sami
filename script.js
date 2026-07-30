@@ -464,6 +464,7 @@ const langButtons = document.querySelectorAll(".lang-option[data-set-lang]");
 const reviewPrevButton = document.querySelector(".reviews-prev");
 const reviewNextButton = document.querySelector(".reviews-next");
 const reviewStarNodes = document.querySelectorAll(".review-stars");
+let revealObserver = null;
 
 let currentLanguage = "he";
 
@@ -554,8 +555,8 @@ function renderMenu(category) {
   const items = (dictionary.menuItems && dictionary.menuItems[category]) || [];
   const hideDescription = category === "sides" || category === "drinks";
 
-  menuGrid.innerHTML = items.map((item) => `
-    <article class="menu-item reveal visible${hideDescription ? " compact-card" : ""}">
+  menuGrid.innerHTML = items.map((item, index) => `
+    <article class="menu-item reveal${hideDescription ? " compact-card" : ""}" style="--stagger:${index % 7};">
       <div class="menu-item-body">
         <div class="menu-title-wrap">
           <h3>${item.name}</h3>
@@ -565,6 +566,8 @@ function renderMenu(category) {
       <span class="price" aria-label="מחיר ${item.price}">${item.price}</span>
     </article>
   `).join("");
+
+  observeReveals(menuGrid);
 }
 
 function closeLanguageMenu() {
@@ -691,17 +694,48 @@ window.addEventListener("scroll", () => {
   window.requestAnimationFrame(updateHeaderState);
 }, { passive: true });
 
-const observer = new IntersectionObserver((entries, obs) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) {
+function initRevealObserver() {
+  if (prefersReducedMotion) {
+    document.querySelectorAll(".reveal").forEach((element) => {
+      element.classList.add("visible");
+    });
+    return;
+  }
+
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+  }
+
+  observeReveals(document);
+}
+
+function observeReveals(scope) {
+  if (prefersReducedMotion) {
+    scope.querySelectorAll(".reveal").forEach((element) => {
+      element.classList.add("visible");
+    });
+    return;
+  }
+
+  if (!revealObserver) {
+    return;
+  }
+
+  scope.querySelectorAll(".reveal").forEach((element) => {
+    if (element.classList.contains("visible")) {
       return;
     }
-    entry.target.classList.add("visible");
-    obs.unobserve(entry.target);
+    revealObserver.observe(element);
   });
-}, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
-
-document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+}
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", (event) => {
@@ -782,7 +816,11 @@ function setupReviewsSlider() {
 
   function updateTrackPosition() {
     const cardWidth = 100 / cardsPerView;
+    track.classList.add("is-transitioning");
     track.style.transform = `translateX(${currentIndex * cardWidth}%)`;
+    window.setTimeout(() => {
+      track.classList.remove("is-transitioning");
+    }, 280);
     updateDots();
     updateButtons();
   }
@@ -911,6 +949,7 @@ function initLoader() {
     document.body.classList.remove("is-loading");
     document.body.classList.add("is-loaded");
     loader.classList.add("is-hidden");
+    initRevealObserver();
   }
 
   window.setTimeout(hideLoader, maxVisibleTime);
