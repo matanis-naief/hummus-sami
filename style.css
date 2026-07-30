@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -633,11 +634,16 @@ iframe {
 .contact-section {
   background: linear-gradient(145deg, #3b4329 0%, #536038 60%, #5b6a3f 100%);
   color: var(--white);
+  overflow-x: clip;
 }
 
 .contact-grid {
   grid-template-columns: 0.94fr 1.06fr;
   align-items: stretch;
+}
+
+.contact-grid > * {
+  min-width: 0;
 }
 
 .contact-card,
@@ -799,6 +805,9 @@ iframe {
   overflow: hidden;
   min-height: clamp(310px, 45vw, 560px);
   aspect-ratio: 16 / 11;
+  width: 100%;
+  max-width: 100%;
+  justify-self: stretch;
   border: 1px solid rgba(199, 164, 93, 0.4);
   background: rgba(255, 255, 255, 0.16);
 }
@@ -822,10 +831,12 @@ iframe {
 .map-overlay-actions {
   position: absolute;
   right: 0.9rem;
+  left: 0.9rem;
   bottom: 0.9rem;
   z-index: 3;
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.55rem;
 }
 
@@ -840,6 +851,8 @@ iframe {
   background: rgba(56, 66, 38, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
+  text-align: center;
+  white-space: normal;
 }
 
 .floating-whatsapp {
@@ -1072,6 +1085,10 @@ iframe {
     z-index: 3;
     background: linear-gradient(180deg, rgba(56, 66, 38, 0.88), rgba(56, 66, 38, 0.8));
     padding: 0.75rem;
+  }
+
+  .map-action-btn {
+    flex: 1 1 30%;
   }
 
   .map-placeholder {
