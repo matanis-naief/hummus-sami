@@ -1702,15 +1702,15 @@ body.is-loaded .menu-toggle {
   }
 }
 
-@media (min-width: 769px) and (max-width: 1180px) {
+@media (min-width: 769px) and (max-width: 1366px) {
   .site-header,
   .nav-wrap {
     min-width: 0;
   }
 
   .nav-wrap {
-    min-height: 80px;
-    gap: 0.72rem;
+    min-height: 78px;
+    gap: 0.62rem;
     flex-wrap: nowrap;
   }
 
@@ -1722,40 +1722,45 @@ body.is-loaded .menu-toggle {
   }
 
   .brand {
-    max-width: clamp(210px, 31vw, 330px);
-    gap: 0.52rem;
+    max-width: clamp(190px, 29vw, 305px);
+    gap: 0.45rem;
   }
 
   .brand-logo {
-    width: clamp(72px, 8vw, 86px);
+    width: clamp(68px, 7.2vw, 82px);
   }
 
   .brand-text {
-    font-size: clamp(1.03rem, 1.48vw, 1.2rem);
+    font-size: clamp(0.98rem, 1.25vw, 1.12rem);
   }
 
   .brand-slogan {
     display: block;
     opacity: 1;
     visibility: visible;
-    max-width: 240px;
+    max-width: 214px;
     max-height: 40px;
     margin: 0;
     overflow: hidden;
     color: rgba(246, 240, 228, 0.96);
-    font-size: clamp(0.72rem, 1.1vw, 0.86rem);
-    line-height: 1.18;
+    font-size: clamp(0.66rem, 0.88vw, 0.8rem);
+    line-height: 1.12;
+    letter-spacing: 0.003em;
+    padding-inline: 0;
     text-shadow: 0 1px 7px rgba(12, 15, 10, 0.35);
-    transition: opacity 0.25s ease, max-width 0.25s ease, max-height 0.25s ease, margin 0.25s ease, visibility 0.25s ease;
+    transition: opacity 0.25s ease, max-width 0.25s ease, max-height 0.25s ease, margin 0.25s ease, visibility 0.25s ease, font-size 0.25s ease, letter-spacing 0.25s ease, line-height 0.25s ease;
   }
 
   .main-nav {
-    gap: clamp(0.62rem, 1.05vw, 1rem);
+    gap: clamp(0.45rem, 0.8vw, 0.8rem);
     white-space: nowrap;
+    flex-wrap: nowrap;
   }
 
   .main-nav a {
     white-space: nowrap;
+    padding-inline: clamp(0.04rem, 0.2vw, 0.2rem);
+    font-size: clamp(0.9rem, 0.88vw, 1rem);
   }
 
   .site-header .header-scroll-text,
@@ -1764,13 +1769,25 @@ body.is-loaded .menu-toggle {
   }
 
   .site-header.scrolled .brand-slogan {
-    opacity: 0;
-    visibility: hidden;
-    max-width: 0;
-    max-height: 0;
+    opacity: 0.92;
+    visibility: visible;
+    max-width: 158px;
+    max-height: 24px;
     margin: 0;
-    pointer-events: none;
+    font-size: clamp(0.58rem, 0.72vw, 0.68rem);
+    line-height: 1.06;
+    letter-spacing: 0;
+    padding-inline: 0;
     text-shadow: none;
+  }
+
+  .site-header.scrolled .brand {
+    gap: 0.38rem;
+    max-width: clamp(172px, 26vw, 278px);
+  }
+
+  .site-header.scrolled .main-nav {
+    gap: clamp(0.38rem, 0.72vw, 0.7rem);
   }
 }
 
