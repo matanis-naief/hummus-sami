@@ -85,6 +85,7 @@ const content = {
       hoursDays2: "ראשון",
       hoursTime2: "סגור",
       follow: "עקבו אחרינו",
+      riderLine: "רוכבים תמיד מוזמנים",
       copyright: "חומוסיית סמי. כל הזכויות שמורות."
     },
     menuItems: {
@@ -196,6 +197,7 @@ const content = {
       hoursDays2: "Sunday",
       hoursTime2: "Closed",
       follow: "Follow Us",
+      riderLine: "רוכבים תמיד מוזמנים",
       copyright: "Hummus Sami. All rights reserved."
     },
     menuItems: {
@@ -307,6 +309,7 @@ const content = {
       hoursDays2: "الأحد",
       hoursTime2: "مغلق",
       follow: "تابعونا",
+      riderLine: "רוכבים תמיד מוזמנים",
       copyright: "حمصية سمي. جميع الحقوق محفوظة."
     },
     menuItems: {
@@ -418,6 +421,7 @@ const content = {
       hoursDays2: "Воскресенье",
       hoursTime2: "Закрыто",
       follow: "Мы в соцсетях",
+      riderLine: "רוכבים תמיד מוזמנים",
       copyright: "Hummus Sami. Все права защищены."
     },
     menuItems: {
