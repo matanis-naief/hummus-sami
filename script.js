@@ -8,7 +8,11 @@ const languageConfig = {
 const content = {
   he: {
     loader: { message: "טוענים לכם משהו טעים..." },
-    header: { slogan: "ממכר כמה שזה טעים" },
+    header: {
+      slogan: "ממכר כמה שזה טעים",
+      menuOpen: "תפריט",
+      menuClose: "סגירה"
+    },
     lang: { label: "שפה" },
     nav: { about: "אודות", menu: "תפריט", contact: "צור קשר", hours: "שעות פתיחה" },
     hero: {
@@ -121,7 +125,11 @@ const content = {
   },
   en: {
     loader: { message: "Preparing something delicious for you..." },
-    header: { slogan: "Addictive because it is so tasty" },
+    header: {
+      slogan: "So delicious, it’s addictive",
+      menuOpen: "Menu",
+      menuClose: "Close"
+    },
     lang: { label: "Language" },
     nav: { about: "About", menu: "Menu", contact: "Contact", hours: "Opening Hours" },
     hero: {
@@ -234,7 +242,11 @@ const content = {
   },
   ar: {
     loader: { message: "نحضّر لكم شيئاً لذيذاً..." },
-    header: { slogan: "إدمان من شدة الطعم" },
+    header: {
+      slogan: "لذيذ لدرجة الإدمان",
+      menuOpen: "القائمة",
+      menuClose: "إغلاق"
+    },
     lang: { label: "اللغة" },
     nav: { about: "من نحن", menu: "القائمة", contact: "تواصل", hours: "ساعات العمل" },
     hero: {
@@ -347,7 +359,11 @@ const content = {
   },
   ru: {
     loader: { message: "Готовим для вас что-то вкусное..." },
-    header: { slogan: "Настолько вкусно, что вызывает зависимость" },
+    header: {
+      slogan: "Настолько вкусно, что невозможно остановиться",
+      menuOpen: "Меню",
+      menuClose: "Закрыть"
+    },
     lang: { label: "Язык" },
     nav: { about: "О нас", menu: "Меню", contact: "Контакты", hours: "Часы работы" },
     hero: {
@@ -472,6 +488,9 @@ const langButtons = document.querySelectorAll(".lang-option[data-set-lang]");
 const reviewPrevButton = document.querySelector(".reviews-prev");
 const reviewNextButton = document.querySelector(".reviews-next");
 const reviewStarNodes = document.querySelectorAll(".review-stars");
+const toggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".main-nav");
+const menuToggleLabel = document.querySelector(".menu-toggle-label");
 let revealObserver = null;
 
 let currentLanguage = "he";
@@ -515,6 +534,18 @@ function updateLanguageLabels() {
     const isActive = button.dataset.setLang === currentLanguage;
     button.setAttribute("aria-pressed", isActive ? "true" : "false");
   });
+}
+
+function updateMenuToggleLabel() {
+  if (!toggle || !menuToggleLabel || !nav) {
+    return;
+  }
+
+  const dictionary = getCurrentContent();
+  const isOpen = nav.classList.contains("open");
+  const nextLabel = isOpen ? dictionary.header.menuClose : dictionary.header.menuOpen;
+  menuToggleLabel.textContent = nextLabel;
+  toggle.setAttribute("aria-label", nextLabel);
 }
 
 function applyStaticTranslations() {
@@ -594,6 +625,7 @@ function applyLanguage(language) {
   setStoredLanguage(language);
   applyStaticTranslations();
   updateLanguageLabels();
+  updateMenuToggleLabel();
   renderMenu(getCurrentCategory());
 }
 
@@ -648,19 +680,18 @@ if (langToggle && langSelector) {
   });
 }
 
-const toggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".main-nav");
-
 function closeMenu() {
   nav.classList.remove("open");
   document.body.classList.remove("menu-open");
   toggle.setAttribute("aria-expanded", "false");
+  updateMenuToggleLabel();
 }
 
 toggle.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("open");
   document.body.classList.toggle("menu-open", isOpen);
   toggle.setAttribute("aria-expanded", String(isOpen));
+  updateMenuToggleLabel();
 });
 
 document.querySelectorAll(".main-nav a").forEach((link) => {
