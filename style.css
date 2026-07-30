@@ -611,6 +611,19 @@ iframe {
   line-height: 1.55;
 }
 
+.menu-item.compact-card {
+  padding-block: 0.68rem;
+}
+
+.menu-item.compact-card .menu-title-wrap {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.menu-item.compact-card .menu-title-wrap::after {
+  display: none;
+}
+
 .price {
   align-self: start;
   background: linear-gradient(145deg, color-mix(in srgb, var(--olive) 86%, black), var(--olive));
@@ -853,16 +866,22 @@ iframe {
   left: max(12px, env(safe-area-inset-left));
   bottom: max(16px, calc(env(safe-area-inset-bottom) + 16px));
   z-index: 999;
-  width: 56px;
-  height: 56px;
+  min-height: 48px;
   border-radius: 999px;
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
   background: linear-gradient(160deg, #f0e1c5, #dbc08a);
   color: var(--olive-dark);
-  font-size: 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
   box-shadow: 0 12px 20px rgba(16, 30, 13, 0.2);
   border: 1px solid rgba(88, 99, 59, 0.3);
+}
+
+.floating-call span[aria-hidden="true"] {
+  font-size: 1rem;
 }
 
 .site-footer {
@@ -1142,8 +1161,9 @@ iframe {
   }
 
   .floating-call {
-    width: 54px;
-    height: 54px;
+    min-height: 46px;
+    padding: 0.45rem 0.72rem;
+    font-size: 0.9rem;
   }
 }
 

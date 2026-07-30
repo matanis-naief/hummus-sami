@@ -157,14 +157,15 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 function renderMenu(category) {
   const items = menuData[category] || [];
+  const hideDescription = category === "sides" || category === "drinks";
 
   menuGrid.innerHTML = items.map((item) => `
-    <article class="menu-item reveal visible">
+    <article class="menu-item reveal visible${hideDescription ? " compact-card" : ""}">
       <div class="menu-item-body">
         <div class="menu-title-wrap">
           <h3>${item.name}</h3>
         </div>
-        <p>${item.description}</p>
+        ${hideDescription ? "" : `<p>${item.description}</p>`}
       </div>
       <span class="price" aria-label="מחיר ${item.price}">${item.price}</span>
     </article>
