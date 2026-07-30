@@ -151,20 +151,46 @@ const menuData = {
   ]
 };
 
+const categoryImageByType = {
+  hummus: { src: "images/hummusmix.jpg", width: 1402, height: 1122, alt: "מנת חומוס טרייה" },
+  pitas: { src: "images/A8B3FDE4-446A-4CF7-9E1F-5B7226BF3DE0.PNG", width: 1672, height: 941, alt: "פיתה טרייה" },
+  sides: { src: "images/A78EA06E-7AC7-494F-83B3-B8D67D1EB13F.jpg", width: 1402, height: 1052, alt: "מנות צד טריות" },
+  drinks: { src: "images/C6264029-7274-4C65-9082-455E79306BE9_1_201_a.jpeg", width: 799, height: 785, alt: "משקאות קרים" },
+  desserts: { src: "images/chef.jpg", width: 1079, height: 1086, alt: "קינוח לצד הארוחה" }
+};
+
 const menuGrid = document.getElementById("menuGrid");
 const categoryButtons = document.querySelectorAll(".category-btn");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function getCategoryMedia(category) {
+  return categoryImageByType[category] || categoryImageByType.hummus;
+}
 
 function renderMenu(category) {
   const items = menuData[category] || [];
   const showDescriptions = category !== "sides" && category !== "drinks";
+  const media = getCategoryMedia(category);
 
-  menuGrid.innerHTML = items.map(item => `
+  menuGrid.innerHTML = items.map((item, index) => `
     <article class="menu-item reveal visible">
-      <div>
-        <h3>${item.name}</h3>
+      <figure class="menu-media">
+        <img
+          src="${media.src}"
+          alt="${media.alt}"
+          width="${media.width}"
+          height="${media.height}"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+      <div class="menu-item-body">
+        <div class="menu-title-wrap">
+          <h3>${item.name}</h3>
+        </div>
         ${showDescriptions ? `<p>${item.description}</p>` : ""}
       </div>
-      <span class="price">${item.price}</span>
+      <span class="price" aria-label="מחיר ${item.price}">${item.price}</span>
     </article>
   `).join("");
 }
@@ -180,35 +206,286 @@ categoryButtons.forEach(button => {
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".main-nav");
 
+function closeMenu() {
+  nav.classList.remove("open");
+  toggle.setAttribute("aria-expanded", "false");
+}
+
 toggle.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("open");
-  toggle.setAttribute("aria-expanded", isOpen);
+  toggle.setAttribute("aria-expanded", String(isOpen));
 });
 
 document.querySelectorAll(".main-nav a").forEach(link => {
   link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    toggle.setAttribute("aria-expanded", "false");
+    closeMenu();
   });
+});
+
+document.addEventListener("click", (event) => {
+  if (!nav.classList.contains("open")) {
+    return;
+  }
+  if (nav.contains(event.target) || toggle.contains(event.target)) {
+    return;
+  }
+  closeMenu();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
 });
 
 const header = document.querySelector(".site-header");
+let scrollTicking = false;
+
+function updateHeaderState() {
+  header.classList.toggle("scrolled", window.scrollY > 40);
+  scrollTicking = false;
+}
 
 window.addEventListener("scroll", () => {
-  header.classList.toggle("scrolled", window.scrollY > 40);
+  if (scrollTicking) {
+    return;
+  }
+  scrollTicking = true;
+  window.requestAnimationFrame(updateHeaderState);
+}, { passive: true });
+
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    }
+    entry.target.classList.add("visible");
+    obs.unobserve(entry.target);
+  });
+}, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+
+document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", (event) => {
+    const targetId = anchor.getAttribute("href");
+    if (!targetId || targetId === "#") {
+      return;
+    }
+    const target = document.querySelector(targetId);
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+    const behavior = prefersReducedMotion ? "auto" : "smooth";
+    target.scrollIntoView({ behavior, block: "start" });
+    history.replaceState(null, "", targetId);
+  });
 });
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
+function setupReviewsSlider() {
+  const slider = document.querySelector(".reviews-slider");
+  if (!slider) {
+    return;
+  }
+
+  const track = slider.querySelector(".reviews-track");
+  const cards = Array.from(slider.querySelectorAll(".review-card"));
+  const prevButton = slider.querySelector(".reviews-prev");
+  const nextButton = slider.querySelector(".reviews-next");
+  const dotsWrap = document.querySelector(".reviews-dots");
+  const viewport = slider.querySelector(".reviews-viewport");
+
+  let currentIndex = 0;
+  let cardsPerView = 1;
+  let maxIndex = 0;
+  let autoplayId = null;
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  function calculateCardsPerView() {
+    if (window.innerWidth >= 1024) {
+      return 3;
+    }
+    if (window.innerWidth >= 768) {
+      return 2;
+    }
+    return 1;
+  }
+
+  function createDots() {
+    dotsWrap.innerHTML = "";
+    for (let i = 0; i <= maxIndex; i += 1) {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "reviews-dot";
+      dot.setAttribute("aria-label", `מעבר לחוות דעת ${i + 1}`);
+      dot.addEventListener("click", () => {
+        goTo(i);
+      });
+      dotsWrap.append(dot);
+    }
+  }
+
+  function updateDots() {
+    const dots = dotsWrap.querySelectorAll(".reviews-dot");
+    dots.forEach((dot, index) => {
+      const isActive = index === currentIndex;
+      dot.classList.toggle("active", isActive);
+      dot.setAttribute("aria-current", isActive ? "true" : "false");
+    });
+  }
+
+  function updateButtons() {
+    prevButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex === maxIndex;
+  }
+
+  function updateTrackPosition() {
+    const cardWidth = 100 / cardsPerView;
+    track.style.transform = `translateX(${currentIndex * cardWidth}%)`;
+    updateDots();
+    updateButtons();
+  }
+
+  function goTo(index) {
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+    updateTrackPosition();
+  }
+
+  function next() {
+    if (currentIndex >= maxIndex) {
+      goTo(0);
+      return;
+    }
+    goTo(currentIndex + 1);
+  }
+
+  function previous() {
+    if (currentIndex <= 0) {
+      goTo(maxIndex);
+      return;
+    }
+    goTo(currentIndex - 1);
+  }
+
+  function stopAutoplay() {
+    if (!autoplayId) {
+      return;
+    }
+    window.clearInterval(autoplayId);
+    autoplayId = null;
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    if (prefersReducedMotion) {
+      return;
+    }
+    autoplayId = window.setInterval(next, 5500);
+  }
+
+  function onResize() {
+    const nextCardsPerView = calculateCardsPerView();
+    if (nextCardsPerView === cardsPerView) {
+      return;
+    }
+    cardsPerView = nextCardsPerView;
+    maxIndex = Math.max(0, cards.length - cardsPerView);
+    if (currentIndex > maxIndex) {
+      currentIndex = maxIndex;
+    }
+
+    track.style.setProperty("--cards-per-view", String(cardsPerView));
+    createDots();
+    updateTrackPosition();
+  }
+
+  prevButton.addEventListener("click", () => {
+    previous();
+  });
+
+  nextButton.addEventListener("click", () => {
+    next();
+  });
+
+  slider.addEventListener("mouseenter", stopAutoplay);
+  slider.addEventListener("mouseleave", startAutoplay);
+  slider.addEventListener("focusin", stopAutoplay);
+  slider.addEventListener("focusout", startAutoplay);
+
+  viewport.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      next();
+      stopAutoplay();
+    }
+    if (event.key === "ArrowRight") {
+      previous();
+      stopAutoplay();
     }
   });
-}, { threshold: 0.12 });
 
-document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
+  viewport.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0].clientX;
+  }, { passive: true });
+
+  viewport.addEventListener("touchend", (event) => {
+    touchEndX = event.changedTouches[0].clientX;
+    const delta = touchStartX - touchEndX;
+    if (Math.abs(delta) < 35) {
+      return;
+    }
+    if (delta > 0) {
+      next();
+    } else {
+      previous();
+    }
+    stopAutoplay();
+  }, { passive: true });
+
+  window.addEventListener("resize", onResize, { passive: true });
+
+  cardsPerView = calculateCardsPerView();
+  maxIndex = Math.max(0, cards.length - cardsPerView);
+  track.style.setProperty("--cards-per-view", String(cardsPerView));
+  createDots();
+  updateTrackPosition();
+  startAutoplay();
+}
+
+function initLoader() {
+  const loader = document.getElementById("siteLoader");
+  if (!loader) {
+    return;
+  }
+
+  const startTime = performance.now();
+  const minVisibleTime = 420;
+  const maxVisibleTime = 1200;
+  let hidden = false;
+
+  function hideLoader() {
+    if (hidden) {
+      return;
+    }
+    hidden = true;
+    document.body.classList.remove("is-loading");
+    document.body.classList.add("is-loaded");
+    loader.classList.add("is-hidden");
+  }
+
+  window.setTimeout(hideLoader, maxVisibleTime);
+
+  window.addEventListener("load", () => {
+    const elapsed = performance.now() - startTime;
+    const delay = Math.max(0, minVisibleTime - elapsed);
+    window.setTimeout(hideLoader, delay);
+  }, { once: true });
+}
 
 document.getElementById("year").textContent = new Date().getFullYear();
-
 renderMenu("hummus");
+setupReviewsSlider();
+updateHeaderState();
+initLoader();
