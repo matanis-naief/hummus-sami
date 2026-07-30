@@ -151,44 +151,20 @@ const menuData = {
   ]
 };
 
-const categoryImageByType = {
-  hummus: { src: "images/hummusmix.jpg", width: 1402, height: 1122, alt: "מנת חומוס טרייה" },
-  pitas: { src: "images/A8B3FDE4-446A-4CF7-9E1F-5B7226BF3DE0.PNG", width: 1672, height: 941, alt: "פיתה טרייה" },
-  sides: { src: "images/A78EA06E-7AC7-494F-83B3-B8D67D1EB13F.jpg", width: 1402, height: 1052, alt: "מנות צד טריות" },
-  drinks: { src: "images/C6264029-7274-4C65-9082-455E79306BE9_1_201_a.jpeg", width: 799, height: 785, alt: "משקאות קרים" },
-  desserts: { src: "images/chef.jpg", width: 1079, height: 1086, alt: "קינוח לצד הארוחה" }
-};
-
 const menuGrid = document.getElementById("menuGrid");
 const categoryButtons = document.querySelectorAll(".category-btn");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function getCategoryMedia(category) {
-  return categoryImageByType[category] || categoryImageByType.hummus;
-}
-
 function renderMenu(category) {
   const items = menuData[category] || [];
-  const showDescriptions = category !== "sides" && category !== "drinks";
-  const media = getCategoryMedia(category);
 
-  menuGrid.innerHTML = items.map((item, index) => `
+  menuGrid.innerHTML = items.map((item) => `
     <article class="menu-item reveal visible">
-      <figure class="menu-media">
-        <img
-          src="${media.src}"
-          alt="${media.alt}"
-          width="${media.width}"
-          height="${media.height}"
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
       <div class="menu-item-body">
         <div class="menu-title-wrap">
           <h3>${item.name}</h3>
         </div>
-        ${showDescriptions ? `<p>${item.description}</p>` : ""}
+        <p>${item.description}</p>
       </div>
       <span class="price" aria-label="מחיר ${item.price}">${item.price}</span>
     </article>
@@ -208,11 +184,13 @@ const nav = document.querySelector(".main-nav");
 
 function closeMenu() {
   nav.classList.remove("open");
+  document.body.classList.remove("menu-open");
   toggle.setAttribute("aria-expanded", "false");
 }
 
 toggle.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("open");
+  document.body.classList.toggle("menu-open", isOpen);
   toggle.setAttribute("aria-expanded", String(isOpen));
 });
 
