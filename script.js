@@ -58,8 +58,10 @@ const content = {
       ratingSuffix: "מתוך 5 · Google",
       googleReviews: "צפייה בכל הביקורות בגוגל",
       mapNav: "ניווט ב-Google Maps",
+      mapSupport: "פתחו מסלול ישירות למסעדה",
       callCta: "חייגו אלינו",
-      phoneAria: "חייגו אלינו לחומוסיית סמי"
+      phoneAria: "חייגו אלינו לחומוסיית סמי",
+      mapAria: "פתיחת ניווט ב-Google Maps לחומוסיית סמי"
     },
     reviews: {
       oneText: "השירות כאן מדהים, והחומוס טעים בטירוף. מומלץ לכל מי שרוצה חוויית אוכל אותנטית.",
@@ -166,8 +168,10 @@ const content = {
       ratingSuffix: "out of 5 · Google",
       googleReviews: "See All Google Reviews",
       mapNav: "Navigate with Google Maps",
+      mapSupport: "Open a route directly to the restaurant",
       callCta: "Call Us",
-      phoneAria: "Call Hummus Sami"
+      phoneAria: "Call Hummus Sami",
+      mapAria: "Open Google Maps navigation to Hummus Sami"
     },
     reviews: {
       oneText: "The service here is amazing, and the hummus is incredibly tasty. Highly recommended for anyone seeking an authentic food experience.",
@@ -274,8 +278,10 @@ const content = {
       ratingSuffix: "من 5 · Google",
       googleReviews: "عرض كل تقييمات Google",
       mapNav: "التنقل عبر Google Maps",
+      mapSupport: "افتحوا مساراً مباشراً إلى المطعم",
       callCta: "اتصلوا بنا",
-      phoneAria: "اتصلوا بحمصية سمي"
+      phoneAria: "اتصلوا بحمصية سمي",
+      mapAria: "افتحوا التنقل عبر Google Maps إلى حمصية سمي"
     },
     reviews: {
       oneText: "الخدمة هنا رائعة والحمص لذيذ جداً. ننصح به لكل من يريد تجربة طعام أصيلة.",
@@ -382,8 +388,10 @@ const content = {
       ratingSuffix: "из 5 · Google",
       googleReviews: "Смотреть все отзывы в Google",
       mapNav: "Маршрут в Google Maps",
+      mapSupport: "Откройте маршрут прямо до ресторана",
       callCta: "Позвонить",
-      phoneAria: "Позвонить в Hummus Sami"
+      phoneAria: "Позвонить в Hummus Sami",
+      mapAria: "Открыть маршрут в Google Maps до Hummus Sami"
     },
     reviews: {
       oneText: "Отличный сервис, а хумус невероятно вкусный. Рекомендуем всем, кто хочет аутентичную кухню.",
@@ -509,10 +517,13 @@ function applyStaticTranslations() {
 
   const callLinks = document.querySelectorAll('a[href^="tel:+972509942222"]');
   callLinks.forEach((link) => {
-    if (link.classList.contains("map-action-btn") || link.closest(".floating-call")) {
-      link.setAttribute("aria-label", dictionary.contact.phoneAria);
-    }
+    link.setAttribute("aria-label", dictionary.contact.phoneAria);
   });
+
+  const mapActionLink = document.querySelector("[data-map-link='true']");
+  if (mapActionLink && dictionary.contact.mapAria) {
+    mapActionLink.setAttribute("aria-label", dictionary.contact.mapAria);
+  }
 
   reviewStarNodes.forEach((node) => {
     node.setAttribute("aria-label", dictionary.reviews.starsAria);

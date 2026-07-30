@@ -752,6 +752,12 @@ iframe {
   min-width: 0;
 }
 
+.map-column {
+  display: grid;
+  align-content: start;
+  gap: 0.9rem;
+}
+
 .contact-card,
 .map-placeholder {
   border-radius: var(--radius-xl);
@@ -934,31 +940,56 @@ iframe {
   z-index: 2;
 }
 
-.map-overlay-actions {
-  position: absolute;
-  inset-inline-start: 0.9rem;
-  inset-inline-end: 0.9rem;
-  bottom: 0.9rem;
-  z-index: 3;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.55rem;
+.contact-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  width: min(100%, 560px);
 }
 
-.map-action-btn {
-  min-height: 44px;
-  display: inline-flex;
+.contact-action-card {
+  min-height: 48px;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  justify-content: center;
-  padding-inline: 0.95rem;
+  gap: 0.6rem;
+  padding: 0.68rem 0.78rem;
+  background: linear-gradient(180deg, #fffdf8 0%, #fbf5ea 100%);
+  border: 1px solid rgba(199, 164, 93, 0.38);
+  border-radius: 11px;
+  box-shadow: 0 7px 15px rgba(44, 40, 29, 0.08);
+  color: var(--olive-dark);
+  text-align: start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.action-icon {
+  width: 26px;
+  height: 26px;
   border-radius: 999px;
-  color: #f9f4ea;
-  background: rgba(56, 66, 38, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4px);
-  text-align: center;
-  white-space: normal;
+  display: inline-grid;
+  place-items: center;
+  font-size: 0.88rem;
+  color: #4e5a34;
+  background: linear-gradient(180deg, #f4e9d1 0%, #ebdbba 100%);
+  border: 1px solid rgba(199, 164, 93, 0.55);
+}
+
+.action-content {
+  display: grid;
+  gap: 0.14rem;
+  min-width: 0;
+}
+
+.action-content strong {
+  font-size: 0.94rem;
+  line-height: 1.32;
+}
+
+.action-content small {
+  color: #66704b;
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 .floating-call {
@@ -1069,11 +1100,16 @@ iframe {
 
   .floating-call:hover,
   .social-links a:hover,
-  .map-action-btn:hover,
+  .contact-action-card:hover,
   .google-link:hover,
   .reviews-nav:hover,
   .review-note a:hover {
     transform: translateY(-2px);
+  }
+
+  .contact-action-card:hover {
+    border-color: rgba(199, 164, 93, 0.56);
+    box-shadow: 0 9px 18px rgba(44, 40, 29, 0.12);
   }
 }
 
@@ -1096,6 +1132,10 @@ iframe {
 
   .contact-card {
     order: 1;
+  }
+
+  .map-column {
+    order: 2;
   }
 
   .footer-grid {
@@ -1173,26 +1213,18 @@ iframe {
     margin-inline-start: 0;
   }
 
-  .map-overlay-actions {
-    position: static;
-    z-index: 3;
-    background: linear-gradient(180deg, rgba(56, 66, 38, 0.88), rgba(56, 66, 38, 0.8));
-    padding: 0.75rem;
+  .contact-actions-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    width: 100%;
   }
 
-  .map-action-btn {
-    flex: 1 1 100%;
+  .contact-action-card {
+    min-height: 48px;
   }
 
   .map-placeholder {
-    display: grid;
-    grid-template-rows: 1fr auto;
     min-height: 300px;
-  }
-
-  .map-placeholder iframe,
-  .map-skeleton {
-    bottom: 56px;
   }
 }
 
