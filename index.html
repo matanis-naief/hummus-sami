@@ -259,10 +259,6 @@
 
           <div class="contact-list">
             <div>
-              <span class="contact-icon icon-location" aria-hidden="true"></span>
-              <p><strong data-i18n="contact.addressLabel">כתובת</strong><br><span data-i18n="contact.addressText">מתחם תחנת דלק טן, בית העמק, 2511500</span></p>
-            </div>
-            <div>
               <span class="contact-icon icon-phone" aria-hidden="true"></span>
               <p><strong data-i18n="contact.phoneLabel">טלפון</strong><br><a href="tel:+972509942222" aria-label="חייגו אלינו לחומוסיית סמי">050-994-2222</a></p>
             </div>
@@ -311,39 +307,33 @@
         </div>
 
         <div class="map-column reveal">
-          <div class="map-placeholder" aria-label="מפת גוגל - חומוסיית סמי">
-            <div class="map-skeleton" aria-hidden="true"></div>
-            <iframe
-              src="https://www.google.com/maps?q=32.9697833,35.1487495&z=17&output=embed"
-              loading="lazy"
-              title="מיקום חומוסיית סמי במפת גוגל"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
+          <div class="map-nav-panel" aria-label="איך מגיעים אלינו">
+            <div class="map-nav-copy">
+              <h3 data-i18n="contact.mapTitle">איך מגיעים אלינו</h3>
+              <p data-i18n="contact.mapSupport">ניווט מהיר וישיר למסעדה</p>
+              <p class="map-nav-address"><span class="map-inline-icon icon-location" aria-hidden="true"></span><span data-i18n="contact.addressText">מתחם תחנת דלק טן, בית העמק, 2511500</span></p>
+              <a
+                class="map-nav-btn"
+                href="https://www.google.com/maps/place/Hummus+sami/@32.9697878,35.1461692,17z/data=!3m1!4b1!4m6!3m5!1s0x151dcc3f62f9e05f:0x9ec50d157203baf0!8m2!3d32.9697833!4d35.1487495!16s%2Fg%2F11fyllbnm2?entry=ttu&g_ep=EgoyMDI2MDcyMC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="נווט לחומוסיית סמי ב-Google Maps"
+                data-map-link="true"
+              >
+                <span class="map-inline-icon icon-location" aria-hidden="true"></span>
+                <span data-i18n="contact.mapNav">נווט ב-Google Maps</span>
+              </a>
+            </div>
 
-          <div class="contact-actions-grid" aria-label="פעולות ניווט וטלפון">
-            <a
-              class="contact-action-card"
-              href="https://www.google.com/maps/place/Hummus+sami/@32.9697878,35.1461692,17z/data=!3m1!4b1!4m6!3m5!1s0x151dcc3f62f9e05f:0x9ec50d157203baf0!8m2!3d32.9697833!4d35.1487495!16s%2Fg%2F11fyllbnm2?entry=ttu&g_ep=EgoyMDI2MDcyMC4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="פתיחת ניווט ב-Google Maps לחומוסיית סמי"
-              data-map-link="true"
-            >
-              <span class="action-icon icon-location" aria-hidden="true"></span>
-              <span class="action-content">
-                <strong data-i18n="contact.mapNav">ניווט ב-Google Maps</strong>
-                <small data-i18n="contact.mapSupport">פתחו מסלול ישירות למסעדה</small>
-              </span>
-            </a>
-
-            <a class="contact-action-card" href="tel:+972509942222" aria-label="חייגו אלינו לחומוסיית סמי">
-              <span class="action-icon icon-phone" aria-hidden="true"></span>
-              <span class="action-content">
-                <strong data-i18n="contact.callCta">חייגו אלינו</strong>
-                <small>050-994-2222</small>
-              </span>
-            </a>
+            <div class="map-placeholder" aria-label="מפת גוגל - חומוסיית סמי">
+              <div class="map-skeleton" aria-hidden="true"></div>
+              <iframe
+                src="https://www.google.com/maps?q=32.9697833,35.1487495&z=17&output=embed"
+                loading="lazy"
+                title="מיקום חומוסיית סמי במפת גוגל"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>

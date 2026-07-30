@@ -49,6 +49,7 @@ const content = {
     contact: {
       kicker: "בואו לבקר",
       title: "מחכים לכם בחומוסיית סמי",
+      mapTitle: "איך מגיעים אלינו",
       addressLabel: "כתובת",
       addressText: "מתחם תחנת דלק טן, בית העמק, 2511500",
       phoneLabel: "טלפון",
@@ -58,11 +59,11 @@ const content = {
       hoursLine2: "ראשון: סגור",
       ratingSuffix: "מתוך 5 · Google",
       googleReviews: "צפייה בכל הביקורות בגוגל",
-      mapNav: "ניווט ב-Google Maps",
-      mapSupport: "פתחו מסלול ישירות למסעדה",
+      mapNav: "נווט ב-Google Maps",
+      mapSupport: "ניווט מהיר וישיר למסעדה",
       callCta: "חייגו אלינו",
       phoneAria: "חייגו אלינו לחומוסיית סמי",
-      mapAria: "פתיחת ניווט ב-Google Maps לחומוסיית סמי"
+      mapAria: "נווט לחומוסיית סמי ב-Google Maps"
     },
     reviews: {
       oneText: "השירות כאן מדהים, והחומוס טעים בטירוף. מומלץ לכל מי שרוצה חוויית אוכל אותנטית.",
@@ -161,6 +162,7 @@ const content = {
     contact: {
       kicker: "Come Visit",
       title: "We're Waiting For You At Hummus Sami",
+      mapTitle: "Find Us",
       addressLabel: "Address",
       addressText: "Ten gas station complex, Beit HaEmek, 2511500",
       phoneLabel: "Phone",
@@ -171,10 +173,10 @@ const content = {
       ratingSuffix: "out of 5 · Google",
       googleReviews: "See All Google Reviews",
       mapNav: "Navigate with Google Maps",
-      mapSupport: "Open a route directly to the restaurant",
+      mapSupport: "Quick and direct navigation to the restaurant",
       callCta: "Call Us",
       phoneAria: "Call Hummus Sami",
-      mapAria: "Open Google Maps navigation to Hummus Sami"
+      mapAria: "Navigate to Hummus Sami in Google Maps"
     },
     reviews: {
       oneText: "The service here is amazing, and the hummus is incredibly tasty. Highly recommended for anyone seeking an authentic food experience.",
@@ -273,6 +275,7 @@ const content = {
     contact: {
       kicker: "تفضلوا بزيارتنا",
       title: "بانتظاركم في حمصية سمي",
+      mapTitle: "كيف تصلون إلينا",
       addressLabel: "العنوان",
       addressText: "مجمع محطة تن، بيت هعيمق، 2511500",
       phoneLabel: "الهاتف",
@@ -282,11 +285,11 @@ const content = {
       hoursLine2: "الأحد: مغلق",
       ratingSuffix: "من 5 · Google",
       googleReviews: "عرض كل تقييمات Google",
-      mapNav: "التنقل عبر Google Maps",
-      mapSupport: "افتحوا مساراً مباشراً إلى المطعم",
+      mapNav: "التنقّل عبر Google Maps",
+      mapSupport: "تنقّل سريع ومباشر إلى المطعم",
       callCta: "اتصلوا بنا",
       phoneAria: "اتصلوا بحمصية سمي",
-      mapAria: "افتحوا التنقل عبر Google Maps إلى حمصية سمي"
+      mapAria: "التنقّل إلى حمصية سمي عبر Google Maps"
     },
     reviews: {
       oneText: "الخدمة هنا رائعة والحمص لذيذ جداً. ننصح به لكل من يريد تجربة طعام أصيلة.",
@@ -385,6 +388,7 @@ const content = {
     contact: {
       kicker: "Заходите",
       title: "Ждем вас в Hummus Sami",
+      mapTitle: "Как нас найти",
       addressLabel: "Адрес",
       addressText: "Комплекс заправки Ten, Бейт-ха-Эмек, 2511500",
       phoneLabel: "Телефон",
@@ -394,11 +398,11 @@ const content = {
       hoursLine2: "Воскресенье: закрыто",
       ratingSuffix: "из 5 · Google",
       googleReviews: "Смотреть все отзывы в Google",
-      mapNav: "Маршрут в Google Maps",
-      mapSupport: "Откройте маршрут прямо до ресторана",
+      mapNav: "Открыть маршрут в Google Maps",
+      mapSupport: "Быстрая и прямая навигация к ресторану",
       callCta: "Позвонить",
       phoneAria: "Позвонить в Hummus Sami",
-      mapAria: "Открыть маршрут в Google Maps до Hummus Sami"
+      mapAria: "Построить маршрут к Hummus Sami в Google Maps"
     },
     reviews: {
       oneText: "Отличный сервис, а хумус невероятно вкусный. Рекомендуем всем, кто хочет аутентичную кухню.",
