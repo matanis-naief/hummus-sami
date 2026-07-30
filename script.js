@@ -1,8 +1,8 @@
 const languageConfig = {
   he: { dir: "rtl", label: "עברית" },
-  en: { dir: "ltr", label: "English" },
+  en: { dir: "ltr", label: "EN" },
   ar: { dir: "rtl", label: "العربية" },
-  ru: { dir: "ltr", label: "Русский" }
+  ru: { dir: "ltr", label: "RU" }
 };
 
 const content = {
@@ -492,6 +492,7 @@ const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".main-nav");
 const menuToggleLabel = document.querySelector(".menu-toggle-label");
 let revealObserver = null;
+let menuLabelSwitchTimeout = null;
 
 let currentLanguage = "he";
 
@@ -536,7 +537,42 @@ function updateLanguageLabels() {
   });
 }
 
-function updateMenuToggleLabel() {
+function setMenuToggleLabelText(nextLabel, animate = false) {
+  if (!menuToggleLabel) {
+    return;
+  }
+
+  const currentLabel = menuToggleLabel.textContent.trim();
+  if (currentLabel === nextLabel) {
+    return;
+  }
+
+  if (!animate || prefersReducedMotion) {
+    menuToggleLabel.textContent = nextLabel;
+    return;
+  }
+
+  if (menuLabelSwitchTimeout) {
+    window.clearTimeout(menuLabelSwitchTimeout);
+    menuLabelSwitchTimeout = null;
+  }
+
+  menuToggleLabel.classList.remove("is-in");
+  menuToggleLabel.classList.add("is-out");
+
+  menuLabelSwitchTimeout = window.setTimeout(() => {
+    menuToggleLabel.textContent = nextLabel;
+    menuToggleLabel.classList.remove("is-out");
+    menuToggleLabel.classList.add("is-in");
+
+    menuLabelSwitchTimeout = window.setTimeout(() => {
+      menuToggleLabel.classList.remove("is-in");
+      menuLabelSwitchTimeout = null;
+    }, 240);
+  }, 120);
+}
+
+function updateMenuToggleLabel(animate = false) {
   if (!toggle || !menuToggleLabel || !nav) {
     return;
   }
@@ -544,7 +580,7 @@ function updateMenuToggleLabel() {
   const dictionary = getCurrentContent();
   const isOpen = nav.classList.contains("open");
   const nextLabel = isOpen ? dictionary.header.menuClose : dictionary.header.menuOpen;
-  menuToggleLabel.textContent = nextLabel;
+  setMenuToggleLabelText(nextLabel, animate);
   toggle.setAttribute("aria-label", nextLabel);
 }
 
@@ -681,18 +717,24 @@ if (langToggle && langSelector) {
 }
 
 function closeMenu() {
+  if (!nav || !toggle) {
+    return;
+  }
+
   nav.classList.remove("open");
   document.body.classList.remove("menu-open");
   toggle.setAttribute("aria-expanded", "false");
-  updateMenuToggleLabel();
+  updateMenuToggleLabel(true);
 }
 
-toggle.addEventListener("click", () => {
-  const isOpen = nav.classList.toggle("open");
-  document.body.classList.toggle("menu-open", isOpen);
-  toggle.setAttribute("aria-expanded", String(isOpen));
-  updateMenuToggleLabel();
-});
+if (toggle && nav) {
+  toggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+    document.body.classList.toggle("menu-open", isOpen);
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    updateMenuToggleLabel(true);
+  });
+}
 
 document.querySelectorAll(".main-nav a").forEach((link) => {
   link.addEventListener("click", () => {
@@ -701,6 +743,10 @@ document.querySelectorAll(".main-nav a").forEach((link) => {
 });
 
 document.addEventListener("click", (event) => {
+  if (!nav || !toggle) {
+    return;
+  }
+
   if (!nav.classList.contains("open")) {
     return;
   }
@@ -721,7 +767,12 @@ const header = document.querySelector(".site-header");
 let scrollTicking = false;
 
 function updateHeaderState() {
-  header.classList.toggle("scrolled", window.scrollY > 40);
+  if (!header) {
+    scrollTicking = false;
+    return;
+  }
+
+  header.classList.toggle("scrolled", window.scrollY > 20);
   scrollTicking = false;
 }
 
