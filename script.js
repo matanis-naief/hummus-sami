@@ -1088,9 +1088,25 @@ function initLoader() {
   }
 
   const startTime = performance.now();
-  const minVisibleTime = 420;
-  const maxVisibleTime = 1200;
+  const minVisibleTime = 240;
+  const maxVisibleTime = 1000;
   let hidden = false;
+
+  function waitForImage(image) {
+    if (!image) {
+      return Promise.resolve();
+    }
+
+    if (image.complete && image.naturalWidth > 0) {
+      return Promise.resolve();
+    }
+
+    return new Promise((resolve) => {
+      const finish = () => resolve();
+      image.addEventListener("load", finish, { once: true });
+      image.addEventListener("error", finish, { once: true });
+    });
+  }
 
   function hideLoader() {
     if (hidden) {
@@ -1103,13 +1119,20 @@ function initLoader() {
     initRevealObserver();
   }
 
-  window.setTimeout(hideLoader, maxVisibleTime);
+  const heroImage = document.querySelector(".hero-media img");
+  const brandLogo = document.querySelector(".brand-logo");
+  const criticalAssets = Promise.allSettled([
+    waitForImage(heroImage),
+    waitForImage(brandLogo),
+    document.fonts ? document.fonts.ready : Promise.resolve()
+  ]);
 
-  window.addEventListener("load", () => {
+  criticalAssets.then(() => {
     const elapsed = performance.now() - startTime;
-    const delay = Math.max(0, minVisibleTime - elapsed);
-    window.setTimeout(hideLoader, delay);
-  }, { once: true });
+    window.setTimeout(hideLoader, Math.max(0, minVisibleTime - elapsed));
+  });
+
+  window.setTimeout(hideLoader, maxVisibleTime);
 }
 
 document.getElementById("year").textContent = new Date().getFullYear();

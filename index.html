@@ -47,7 +47,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/newlogo.webp" type="image/webp" />
+  <link rel="preload" as="image" href="images/hero-bg.webp" type="image/webp" />
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/heebo/v28/NGS6v5_NC0k9P9H0TbFhsqMA6aw.woff2" type="font/woff2" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css?v=d542b89" />
   <script id="restaurantJsonLd" type="application/ld+json">
@@ -100,7 +103,10 @@
 <body class="is-loading">
   <div class="site-loader" id="siteLoader" aria-live="polite" role="status">
     <div class="site-loader-inner">
-      <img src="images/newlogo.png" alt="לוגו חומוסיית סמי" class="site-loader-logo" width="1024" height="1024" decoding="async" />
+      <picture>
+        <source srcset="images/newlogo.webp" type="image/webp" />
+        <img src="images/newlogo.png" alt="לוגו חומוסיית סמי" class="site-loader-logo" width="512" height="512" decoding="async" />
+      </picture>
       <div class="site-loader-spinner" aria-hidden="true"></div>
       <p data-i18n="loader.message">טוענים לכם משהו טעים...</p>
     </div>
@@ -109,7 +115,10 @@
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a href="#top" class="brand" aria-label="חומוסיית סמי - דף הבית">
-        <img src="images/newlogo.png" alt="לוגו חומוסיית סמי" class="brand-logo" width="1024" height="1024" decoding="async" />
+        <picture>
+          <source srcset="images/newlogo.webp" type="image/webp" />
+          <img src="images/newlogo.png" alt="לוגו חומוסיית סמי" class="brand-logo" width="512" height="512" decoding="async" />
+        </picture>
         <span class="brand-copy">
           <span class="brand-text" data-i18n="brandTitle">חומוסיית סמי</span>
           <span class="brand-slogan" data-i18n="header.slogan">ממכר כמה שזה טעים</span>
@@ -146,10 +155,17 @@
 
   <main>
     <section class="hero">
+      <picture class="hero-media" aria-hidden="true">
+        <source srcset="images/hero-bg.webp" type="image/webp" />
+        <img src="images/14C4EEF7-A0BF-4828-A806-C1E296F442F0.PNG" alt="" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
       <div class="hero-overlay"></div>
       <div class="container hero-content reveal">
         <div class="hero-top-logo hero-anim-logo">
-          <img src="images/newlogo.png" alt="לוגו חומוסיית סמי" width="1024" height="1024" loading="eager" fetchpriority="high" decoding="async" />
+          <picture>
+            <source srcset="images/newlogo.webp" type="image/webp" />
+            <img src="images/newlogo.png" alt="לוגו חומוסיית סמי" width="512" height="512" loading="eager" fetchpriority="high" decoding="async" />
+          </picture>
         </div>
         <p class="eyebrow hero-anim-slogan" data-i18n="hero.eyebrow">ממכר כמה שזה טעים</p>
         <h1 class="hero-anim-title" data-i18n="hero.title">חומוסיית סמי</h1>
@@ -167,7 +183,10 @@
     <section class="section chef-section" id="chef">
       <div class="container chef-grid reveal">
         <div class="chef-photo">
-          <img src="images/3A8FC713-D32B-48F5-83E3-76E0AE8DF60F.PNG" alt="נאיף - השף של חומוסיית סמי" width="1254" height="1254" loading="lazy" decoding="async" />
+          <picture>
+            <source srcset="images/chef.webp" type="image/webp" />
+            <img src="images/3A8FC713-D32B-48F5-83E3-76E0AE8DF60F.PNG" alt="נאיף - השף של חומוסיית סמי" width="800" height="800" loading="lazy" decoding="async" />
+          </picture>
         </div>
         <div class="chef-copy">
           <p class="section-kicker" data-i18n="chef.kicker">להכיר את הבעלים והשף</p>
@@ -208,6 +227,10 @@
         </div>
 
         <div class="about-image reveal">
+          <picture class="about-image-media" aria-hidden="true">
+            <source srcset="images/hummusmix.webp" type="image/webp" />
+            <img src="images/hummusmix.jpg" alt="" width="1200" height="960" loading="lazy" decoding="async" />
+          </picture>
           <div class="image-badge">
             <strong>100%</strong>
             <span data-i18n="about.badge">טרי כל יום</span>
