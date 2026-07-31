@@ -249,20 +249,30 @@
           <h2 data-i18n="contact.title">מחכים לכם בחומוסיית סמי</h2>
 
           <div class="contact-list">
-            <div>
+            <div class="contact-item">
               <span class="contact-icon phone-icon-wrap" aria-hidden="true">
-                <svg class="phone-line-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.62a2 2 0 0 1-.45 2.11L8 9.89a16 16 0 0 0 6 6l1.44-1.28a2 2 0 0 1 2.11-.45c.84.29 1.72.5 2.62.62A2 2 0 0 1 22 16.92z"></path>
                 </svg>
               </span>
               <p><strong data-i18n="contact.phoneLabel">טלפון</strong><br><a href="tel:+972509942222" aria-label="חייגו אלינו לחומוסיית סמי">050-994-2222</a></p>
             </div>
-            <div>
-              <span class="contact-icon icon-mail" aria-hidden="true"></span>
-              <p><strong data-i18n="contact.emailLabel">אימייל</strong><br><a href="mailto:Matanis.n@gmail.com">Matanis.n@gmail.com</a></p>
-            </div>
-            <div>
-              <span class="contact-icon icon-clock" aria-hidden="true"></span>
+            <a class="contact-item contact-item-email" href="mailto:Matanis.n@gmail.com" aria-label="שלחו אימייל לחומוסיית סמי">
+              <span class="contact-icon" aria-hidden="true">
+                <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <rect x="3" y="5" width="18" height="14" rx="3"></rect>
+                  <path d="M4.5 7.25 12 12.5l7.5-5.25"></path>
+                </svg>
+              </span>
+              <p><strong data-i18n="contact.emailLabel">אימייל</strong><br><span class="contact-value">Matanis.n@gmail.com</span></p>
+            </a>
+            <div class="contact-item">
+              <span class="contact-icon" aria-hidden="true">
+                <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="8.25"></circle>
+                  <path d="M12 8.1v4.2l2.7 1.55"></path>
+                </svg>
+              </span>
               <p><strong data-i18n="contact.hoursLabel">שעות פתיחה</strong><br><span data-i18n="contact.hoursLine1">שני עד שבת: 08:30–16:00</span><br><span data-i18n="contact.hoursLine2">ראשון: סגור</span></p>
             </div>
           </div>
@@ -306,7 +316,7 @@
             <div class="map-nav-copy">
               <h3 data-i18n="contact.mapTitle">איך מגיעים אלינו</h3>
               <p data-i18n="contact.mapSupport">ניווט מהיר וישיר למסעדה</p>
-              <p class="map-nav-address"><span class="map-inline-icon icon-location" aria-hidden="true"></span><span data-i18n="contact.addressText">מתחם תחנת דלק טן, בית העמק, 2511500</span></p>
+              <p class="map-nav-address"><span class="map-inline-icon" aria-hidden="true"><svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s6-5.75 6-11a6 6 0 1 0-12 0c0 5.25 6 11 6 11z"></path><circle cx="12" cy="10" r="2.25"></circle></svg></span><span data-i18n="contact.addressText">מתחם תחנת דלק טן, בית העמק, 2511500</span></p>
               <a
                 class="map-nav-btn"
                 href="https://www.google.com/maps/place/Hummus+sami/@32.9697878,35.1461692,17z/data=!3m1!4b1!4m6!3m5!1s0x151dcc3f62f9e05f:0x9ec50d157203baf0!8m2!3d32.9697833!4d35.1487495!16s%2Fg%2F11fyllbnm2?entry=ttu&g_ep=EgoyMDI2MDcyMC4wIKXMDSoASAFQAw%3D%3D"
@@ -315,7 +325,7 @@
                 aria-label="נווט לחומוסיית סמי ב-Google Maps"
                 data-map-link="true"
               >
-                <span class="map-inline-icon icon-location" aria-hidden="true"></span>
+                <span class="map-inline-icon map-inline-icon-compass" aria-hidden="true"><svg class="contact-icon-svg contact-icon-svg-compass" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.75A9.25 9.25 0 1 0 21.25 12 9.26 9.26 0 0 0 12 2.75Zm3.85 5.4-1.5 4.9a1.75 1.75 0 0 1-1.14 1.15l-4.9 1.5a.55.55 0 0 1-.68-.68l1.5-4.9a1.75 1.75 0 0 1 1.14-1.15l4.9-1.5a.55.55 0 0 1 .68.68Z"></path></svg></span>
                 <span data-i18n="contact.mapNav">נווט ב-Google Maps</span>
               </a>
             </div>
