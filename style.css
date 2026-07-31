@@ -1410,7 +1410,7 @@ footer {
   background: #20251a;
   color: rgba(255, 255, 255, 0.82);
   padding-top: clamp(2.4rem, 6vw, 3.5rem);
-  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
 }
 
 .site-footer::before {
