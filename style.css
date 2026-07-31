@@ -1044,38 +1044,33 @@ iframe {
   border-radius: 14px;
   display: grid;
   place-items: center;
-  background: linear-gradient(180deg, rgba(60, 71, 43, 0.86), rgba(43, 50, 30, 0.94));
-  border: 1px solid rgba(210, 196, 165, 0.34);
+  background: linear-gradient(180deg, rgba(243, 235, 219, 0.98), rgba(232, 219, 192, 0.95));
+  border: 1px solid rgba(171, 151, 107, 0.38);
   box-shadow: 0 8px 16px rgba(20, 24, 13, 0.12);
   flex: 0 0 auto;
-  color: #f6e9cb;
+  color: var(--olive-dark);
   position: relative;
   transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, color 0.24s ease, background 0.24s ease;
-}
-
-.phone-icon-wrap {
-  background: linear-gradient(180deg, rgba(243, 235, 219, 0.98), rgba(232, 219, 192, 0.95));
-  border-color: rgba(171, 151, 107, 0.38);
-  color: var(--olive-dark);
 }
 
 .contact-icon-svg,
 .map-inline-icon svg,
 .phone-line-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   display: block;
   flex: 0 0 auto;
   color: currentColor;
   stroke-width: 1.8;
-  transition: transform 0.22s ease, color 0.22s ease, fill 0.22s ease;
+  opacity: 1;
+  transition: transform 0.24s ease, color 0.24s ease, fill 0.24s ease, stroke 0.24s ease, opacity 0.24s ease;
 }
 
 .contact-icon-svg-compass {
-  width: 21px;
-  height: 21px;
-  fill: currentColor;
-  stroke: none;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
 }
 
 .contact-value {
@@ -1303,9 +1298,9 @@ iframe {
   border-radius: 14px;
   display: inline-grid;
   place-items: center;
-  color: #f6e9cb;
-  background: linear-gradient(180deg, rgba(60, 71, 43, 0.86), rgba(43, 50, 30, 0.94));
-  border: 1px solid rgba(210, 196, 165, 0.34);
+  color: var(--olive-dark);
+  background: linear-gradient(180deg, rgba(243, 235, 219, 0.98), rgba(232, 219, 192, 0.95));
+  border: 1px solid rgba(171, 151, 107, 0.38);
   box-shadow: 0 8px 16px rgba(20, 24, 13, 0.12);
   transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, color 0.24s ease, background 0.24s ease;
   position: relative;
@@ -1313,7 +1308,7 @@ iframe {
 }
 
 .map-inline-icon-compass {
-  color: #f7e4b9;
+  color: var(--olive-dark);
 }
 
 .map-nav-btn:focus-visible {
