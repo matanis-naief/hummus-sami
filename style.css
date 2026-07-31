@@ -27,6 +27,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  min-height: 100%;
 }
 
 body {
@@ -34,6 +35,9 @@ body {
   background: var(--cream);
   color: var(--text);
   line-height: 1.75;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
   overflow-x: hidden;
   text-wrap: pretty;
 }
@@ -93,6 +97,11 @@ iframe {
 .section {
   position: relative;
   padding: clamp(3rem, 7vw, 5.6rem) 0;
+}
+
+main > section:last-child,
+footer {
+  margin-bottom: 0;
 }
 
 .section::before {
@@ -1399,7 +1408,7 @@ iframe {
   background: #20251a;
   color: rgba(255, 255, 255, 0.82);
   padding-top: clamp(2.4rem, 6vw, 3.5rem);
-  padding-bottom: 88px;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
 }
 
 .site-footer::before {
