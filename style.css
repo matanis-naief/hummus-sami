@@ -309,38 +309,44 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.32rem;
-  font-size: 10px;
-  font-weight: 400;
+  gap: 0.28rem;
+  font-size: 9px;
+  font-weight: 300;
   line-height: 1.2;
-  color: rgba(242, 236, 223, 0.64);
-  opacity: 0.6;
-  padding-top: 0.38rem;
+  color: rgba(184, 190, 171, 0.58);
+  opacity: 0.25;
+  padding: 3px 8px;
   margin-top: 8px;
   margin-bottom: 4px;
-  border-top: 1px solid rgba(209, 195, 165, 0.24);
-  letter-spacing: 0.4px;
+  border: 1px solid rgba(206, 196, 172, 0.09);
+  border-radius: 999px;
+  background: rgba(246, 240, 230, 0.04);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  letter-spacing: 0.8px;
   white-space: nowrap;
   pointer-events: none;
-  transition: opacity 0.2s ease;
+  box-shadow: none;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
 }
 
 .dev-credit-icon {
-  width: 11px;
-  height: 11px;
-  color: var(--olive);
+  width: 9px;
+  height: 9px;
+  color: rgba(156, 169, 129, 0.58);
   display: inline-grid;
   place-items: center;
 }
 
 .dev-credit-icon svg {
-  width: 11px;
-  height: 11px;
+  width: 9px;
+  height: 9px;
 }
 
 .main-nav:hover .nav-dev-credit,
 .main-nav:focus-within .nav-dev-credit {
-  opacity: 0.9;
+  opacity: 0.55;
+  border-color: rgba(206, 196, 172, 0.18);
 }
 
 .menu-toggle {
@@ -457,12 +463,13 @@ footer {
 }
 
 .site-header.scrolled .nav-dev-credit {
-  color: rgba(47, 53, 35, 0.68);
-  border-top-color: rgba(88, 99, 59, 0.2);
+  color: rgba(74, 84, 56, 0.58);
+  border-color: rgba(88, 99, 59, 0.1);
+  background: rgba(248, 242, 230, 0.05);
 }
 
 .site-header.scrolled .nav-dev-credit .dev-credit-icon {
-  color: var(--olive);
+  color: rgba(88, 99, 59, 0.58);
 }
 
 .lang-menu {
@@ -1626,29 +1633,35 @@ footer {
 .footer-dev-credit {
   width: min(100%, var(--container-max));
   margin: 8px auto 4px;
-  padding: 0.38rem 1rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 3px 8px;
+  border: 1px solid rgba(229, 219, 193, 0.1);
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.32rem;
-  color: rgba(235, 229, 216, 0.72);
-  font-size: 10px;
-  font-weight: 400;
+  gap: 0.28rem;
+  color: rgba(192, 198, 181, 0.62);
+  font-size: 9px;
+  font-weight: 300;
   line-height: 1.2;
-  letter-spacing: 0.4px;
-  opacity: 0.6;
+  letter-spacing: 0.8px;
+  opacity: 0.25;
   text-align: center;
   white-space: nowrap;
-  transition: opacity 0.2s ease;
+  background: rgba(248, 243, 232, 0.04);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  box-shadow: none;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
 }
 
 .footer-dev-credit .dev-credit-icon {
-  color: var(--olive);
+  color: rgba(161, 173, 132, 0.62);
 }
 
 .footer-dev-credit:hover {
-  opacity: 0.9;
+  opacity: 0.55;
+  border-color: rgba(229, 219, 193, 0.2);
 }
 
 .reveal {
@@ -1907,15 +1920,16 @@ body.is-loaded .menu-toggle {
   .main-nav .nav-dev-credit {
     margin-top: 8px;
     margin-bottom: 4px;
-    padding: 0.45rem 1rem 0.45rem;
-    color: rgba(56, 64, 40, 0.68);
-    border-top: 1px solid rgba(88, 99, 59, 0.16);
-    font-size: 9.5px;
-    font-weight: 400;
+    padding: 3px 8px;
+    color: rgba(74, 84, 56, 0.58);
+    border: 1px solid rgba(88, 99, 59, 0.1);
+    font-size: 8.5px;
+    font-weight: 300;
     line-height: 1.2;
-    letter-spacing: 0.4px;
-    opacity: 0.6;
-    white-space: normal;
+    letter-spacing: 0.8px;
+    opacity: 0.25;
+    white-space: nowrap;
+    background: rgba(248, 242, 230, 0.05);
   }
 
   .main-nav .nav-dev-credit .dev-credit-icon {
@@ -2015,18 +2029,23 @@ body.is-loaded .menu-toggle {
 @media (max-width: 1024px) {
   .main-nav .nav-dev-credit,
   .footer-dev-credit {
-    font-size: 9.5px;
+    font-size: 8.5px;
   }
 }
 
 @media (max-width: 600px) {
   .main-nav .nav-dev-credit,
   .footer-dev-credit {
-    font-size: 9px;
+    font-size: 8px;
+  }
+
+  .main-nav .nav-dev-credit,
+  .footer-dev-credit {
+    white-space: normal;
   }
 
   .footer-dev-credit {
-    white-space: normal;
+    text-wrap: balance;
   }
 
   .site-header .header-scroll-text,
