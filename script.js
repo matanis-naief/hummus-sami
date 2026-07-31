@@ -14,6 +14,7 @@ const content = {
       menuClose: "סגירה"
     },
     lang: { label: "שפה" },
+    brandTitle: "חומוסיית סמי",
     nav: { about: "אודות", menu: "תפריט", contact: "צור קשר", hours: "שעות פתיחה" },
     hero: {
       eyebrow: "ממכר כמה שזה טעים",
@@ -131,6 +132,7 @@ const content = {
       menuClose: "Close"
     },
     lang: { label: "Language" },
+    brandTitle: "Hummus Sami",
     nav: { about: "About", menu: "Menu", contact: "Contact", hours: "Opening Hours" },
     hero: {
       eyebrow: "Addictive because it is so tasty",
@@ -248,10 +250,11 @@ const content = {
       menuClose: "إغلاق"
     },
     lang: { label: "اللغة" },
+    brandTitle: "حمص سامي",
     nav: { about: "من نحن", menu: "القائمة", contact: "تواصل", hours: "ساعات العمل" },
     hero: {
       eyebrow: "إدمان من شدة الطعم",
-      title: "حمصية سمي",
+      title: "حمص سامي",
       subtitle: "حمص أصيل، مكونات عالية الجودة، وأجواء دافئة تشبه البيت.",
       ctaMenu: "القائمة",
       ctaVisit: "زورونا"
@@ -300,8 +303,8 @@ const content = {
       mapNav: "التنقّل عبر Google Maps",
       mapSupport: "تنقّل سريع ومباشر إلى المطعم",
       callCta: "اتصلوا بنا",
-      phoneAria: "اتصلوا بحمصية سمي",
-      mapAria: "التنقّل إلى حمصية سمي عبر Google Maps"
+      phoneAria: "اتصلوا بحمص سامي",
+      mapAria: "التنقّل إلى حمص سامي عبر Google Maps"
     },
     reviews: {
       oneText: "الخدمة هنا رائعة والحمص لذيذ جداً. ننصح به لكل من يريد تجربة طعام أصيلة.",
@@ -316,7 +319,7 @@ const content = {
       jumpTo: "الانتقال إلى تقييم"
     },
     footer: {
-      brandTitle: "حمصية سمي",
+      brandTitle: "حمص سامي",
       brandText: "حمص طازج، أطباق سخية وأجواء عائلية.",
       hoursTitle: "ساعات العمل",
       hoursDays1: "الاثنين–السبت",
@@ -365,6 +368,7 @@ const content = {
       menuClose: "Закрыть"
     },
     lang: { label: "Язык" },
+    brandTitle: "Hummus Sami",
     nav: { about: "О нас", menu: "Меню", contact: "Контакты", hours: "Часы работы" },
     hero: {
       eyebrow: "Настолько вкусно, что вызывает зависимость",
@@ -491,6 +495,30 @@ const reviewStarNodes = document.querySelectorAll(".review-stars");
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".main-nav");
 const menuToggleLabel = document.querySelector(".menu-toggle-label");
+const metadataNodes = {
+  siteName: document.querySelector('meta[property="og:site_name"]'),
+  ogTitle: document.querySelector('meta[property="og:title"]'),
+  twitterTitle: document.querySelector('meta[name="twitter:title"]'),
+  jsonLd: document.getElementById("restaurantJsonLd")
+};
+const defaultMetadata = {
+  title: document.title,
+  siteName: metadataNodes.siteName ? metadataNodes.siteName.getAttribute("content") : "",
+  ogTitle: metadataNodes.ogTitle ? metadataNodes.ogTitle.getAttribute("content") : "",
+  twitterTitle: metadataNodes.twitterTitle ? metadataNodes.twitterTitle.getAttribute("content") : "",
+  jsonLdName: (() => {
+    if (!metadataNodes.jsonLd) {
+      return "";
+    }
+
+    try {
+      const parsed = JSON.parse(metadataNodes.jsonLd.textContent || "{}");
+      return typeof parsed.name === "string" ? parsed.name : "";
+    } catch (_error) {
+      return "";
+    }
+  })()
+};
 let revealObserver = null;
 let menuLabelSwitchTimeout = null;
 
@@ -535,6 +563,38 @@ function updateLanguageLabels() {
     const isActive = button.dataset.setLang === currentLanguage;
     button.setAttribute("aria-pressed", isActive ? "true" : "false");
   });
+}
+
+function updateMetadata() {
+  const dictionary = getCurrentContent();
+  const isArabic = currentLanguage === "ar";
+  const titleText = isArabic ? dictionary.brandTitle : defaultMetadata.title;
+  const siteNameText = isArabic ? dictionary.brandTitle : defaultMetadata.siteName;
+  const ogTitleText = isArabic ? dictionary.brandTitle : defaultMetadata.ogTitle;
+  const twitterTitleText = isArabic ? dictionary.brandTitle : defaultMetadata.twitterTitle;
+  const jsonLdNameText = isArabic ? dictionary.brandTitle : defaultMetadata.jsonLdName;
+
+  document.title = titleText;
+
+  if (metadataNodes.siteName && siteNameText) {
+    metadataNodes.siteName.setAttribute("content", siteNameText);
+  }
+  if (metadataNodes.ogTitle && ogTitleText) {
+    metadataNodes.ogTitle.setAttribute("content", ogTitleText);
+  }
+  if (metadataNodes.twitterTitle && twitterTitleText) {
+    metadataNodes.twitterTitle.setAttribute("content", twitterTitleText);
+  }
+
+  if (metadataNodes.jsonLd && jsonLdNameText) {
+    try {
+      const parsed = JSON.parse(metadataNodes.jsonLd.textContent || "{}");
+      parsed.name = jsonLdNameText;
+      metadataNodes.jsonLd.textContent = JSON.stringify(parsed, null, 2);
+    } catch (_error) {
+      // Ignore malformed JSON-LD so language switching remains stable.
+    }
+  }
 }
 
 function setMenuToggleLabelText(nextLabel, animate = false) {
@@ -623,6 +683,7 @@ function applyStaticTranslations() {
   const pageLang = languageConfig[currentLanguage];
   document.documentElement.lang = currentLanguage;
   document.documentElement.dir = pageLang.dir;
+  updateMetadata();
 }
 
 function renderMenu(category) {
