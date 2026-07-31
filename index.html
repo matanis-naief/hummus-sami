@@ -250,22 +250,28 @@
 
           <div class="contact-list">
             <div class="contact-item">
-              <span class="contact-icon phone-icon-wrap" aria-hidden="true">
-                <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <span class="contact-icon" aria-hidden="true">
+                <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.62a2 2 0 0 1-.45 2.11L8 9.89a16 16 0 0 0 6 6l1.44-1.28a2 2 0 0 1 2.11-.45c.84.29 1.72.5 2.62.62A2 2 0 0 1 22 16.92z"></path>
                 </svg>
               </span>
-              <p><strong data-i18n="contact.phoneLabel">טלפון</strong><br><a href="tel:+972509942222" aria-label="חייגו אלינו לחומוסיית סמי">050-994-2222</a></p>
+              <div class="contact-content">
+                <div class="contact-title" data-i18n="contact.phoneLabel">טלפון</div>
+                <a class="contact-value phone-number" href="tel:+972509942222" aria-label="חייגו אלינו לחומוסיית סמי">050-994-2222</a>
+              </div>
             </div>
-            <a class="contact-item contact-item-email" href="mailto:Matanis.n@gmail.com" aria-label="שלחו אימייל לחומוסיית סמי">
+            <div class="contact-item contact-item-email">
               <span class="contact-icon" aria-hidden="true">
                 <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <rect x="3" y="5" width="18" height="14" rx="3"></rect>
                   <path d="M4.5 7.25 12 12.5l7.5-5.25"></path>
                 </svg>
               </span>
-              <p><strong data-i18n="contact.emailLabel">אימייל</strong><br><span class="contact-value">Matanis.n@gmail.com</span></p>
-            </a>
+              <div class="contact-content">
+                <div class="contact-title" data-i18n="contact.emailLabel">אימייל</div>
+                <a class="contact-value email-address" href="mailto:Matanis.n@gmail.com" aria-label="שלחו אימייל לחומוסיית סמי">Matanis.n@gmail.com</a>
+              </div>
+            </div>
             <div class="contact-item">
               <span class="contact-icon" aria-hidden="true">
                 <svg class="contact-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -273,7 +279,13 @@
                   <path d="M12 8.1v4.2l2.7 1.55"></path>
                 </svg>
               </span>
-              <p><strong data-i18n="contact.hoursLabel">שעות פתיחה</strong><br><span data-i18n="contact.hoursLine1">שני עד שבת: 08:30–16:00</span><br><span data-i18n="contact.hoursLine2">ראשון: סגור</span></p>
+              <div class="contact-content">
+                <div class="contact-title" data-i18n="contact.hoursLabel">שעות פתיחה</div>
+                <div class="contact-hours-lines">
+                  <span data-i18n="contact.hoursLine1">שני עד שבת: 08:30–16:00</span>
+                  <span data-i18n="contact.hoursLine2">ראשון: סגור</span>
+                </div>
+              </div>
             </div>
           </div>
 

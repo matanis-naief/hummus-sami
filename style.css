@@ -1015,9 +1015,11 @@ iframe {
 .contact-list > .contact-item,
 .contact-list > a.contact-item {
   display: flex;
-  align-items: flex-start;
-  gap: 0.7rem;
-  padding: 0.82rem 0.9rem;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  direction: rtl;
+  padding: 1rem;
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(255, 248, 236, 0.12), rgba(255, 248, 236, 0.06));
   border: 1px solid rgba(226, 212, 180, 0.2);
@@ -1039,16 +1041,16 @@ iframe {
 }
 
 .contact-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
   display: grid;
   place-items: center;
-  background: linear-gradient(180deg, rgba(243, 235, 219, 0.98), rgba(232, 219, 192, 0.95));
-  border: 1px solid rgba(171, 151, 107, 0.38);
-  box-shadow: 0 8px 16px rgba(20, 24, 13, 0.12);
+  background: linear-gradient(180deg, rgba(61, 71, 43, 0.96), rgba(41, 47, 28, 0.98));
+  border: 1px solid rgba(199, 164, 93, 0.28);
+  box-shadow: 0 10px 18px rgba(20, 24, 13, 0.18);
   flex: 0 0 auto;
-  color: var(--olive-dark);
+  color: #f6ead3;
   position: relative;
   transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, color 0.24s ease, background 0.24s ease;
 }
@@ -1056,27 +1058,62 @@ iframe {
 .contact-icon-svg,
 .map-inline-icon svg,
 .phone-line-icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   display: block;
   flex: 0 0 auto;
   color: currentColor;
-  stroke-width: 1.8;
+  stroke-width: 2;
   opacity: 1;
   transition: transform 0.24s ease, color 0.24s ease, fill 0.24s ease, stroke 0.24s ease, opacity 0.24s ease;
 }
 
 .contact-icon-svg-compass {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: currentColor;
 }
 
+.contact-content {
+  min-width: 0;
+  flex: 1;
+  text-align: right;
+}
+
+.contact-title {
+  margin-bottom: 4px;
+  color: #fff7ea;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
 .contact-value {
-  color: #fbf1dd;
+  display: block;
+  max-width: 100%;
+  color: #fbf0dc;
   font-weight: 600;
+  text-decoration: none;
   word-break: break-word;
+}
+
+.phone-number {
+  direction: ltr;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+}
+
+.email-address {
+  direction: ltr;
+  unicode-bidi: isolate;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.contact-hours-lines {
+  display: grid;
+  gap: 0.2rem;
+  color: #fbf0dc;
 }
 
 .contact-item p {
@@ -1293,22 +1330,22 @@ iframe {
 }
 
 .map-inline-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
   display: inline-grid;
   place-items: center;
-  color: var(--olive-dark);
-  background: linear-gradient(180deg, rgba(243, 235, 219, 0.98), rgba(232, 219, 192, 0.95));
-  border: 1px solid rgba(171, 151, 107, 0.38);
-  box-shadow: 0 8px 16px rgba(20, 24, 13, 0.12);
+  color: #f6ead3;
+  background: linear-gradient(180deg, rgba(61, 71, 43, 0.96), rgba(41, 47, 28, 0.98));
+  border: 1px solid rgba(199, 164, 93, 0.28);
+  box-shadow: 0 10px 18px rgba(20, 24, 13, 0.18);
   transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, color 0.24s ease, background 0.24s ease;
   position: relative;
   flex: 0 0 auto;
 }
 
 .map-inline-icon-compass {
-  color: var(--olive-dark);
+  color: #f6ead3;
 }
 
 .map-nav-btn:focus-visible {
@@ -1886,7 +1923,7 @@ body.is-loaded .menu-toggle {
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 600px) {
   .container {
     width: min(var(--container-max), calc(100% - 2rem));
   }
@@ -1956,7 +1993,40 @@ body.is-loaded .menu-toggle {
 
   .contact-list > .contact-item,
   .contact-list > a.contact-item {
-    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .contact-icon,
+  .map-inline-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 15px;
+  }
+
+  .contact-icon-svg,
+  .map-inline-icon svg,
+  .phone-line-icon,
+  .contact-icon-svg-compass {
+    width: 28px;
+    height: 28px;
+  }
+
+  .contact-title {
+    font-size: 1rem;
+  }
+
+  .contact-value {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .phone-number {
+    white-space: nowrap;
+  }
+
+  .email-address {
+    overflow-wrap: anywhere;
   }
 
   .reviews-slider {
