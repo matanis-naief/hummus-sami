@@ -705,6 +705,30 @@ footer {
   position: relative;
 }
 
+.feature-icon-bowl {
+  width: 46px;
+  height: 46px;
+  margin-bottom: 0.6rem;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  color: var(--cream);
+  background: var(--matte);
+  box-shadow: 0 8px 18px rgba(29, 33, 24, 0.14);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+}
+
+.feature-icon-bowl svg {
+  width: 26px;
+  height: 26px;
+}
+
+.feature-card:hover .feature-icon-bowl,
+.feature-card:focus-within .feature-icon-bowl {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 22px rgba(29, 33, 24, 0.18);
+}
+
 .feature-card::after {
   content: "";
   position: absolute;
@@ -2005,7 +2029,7 @@ body.is-loaded .menu-toggle {
   }
 
   .hero {
-    min-height: 100vh;
+    min-height: 100svh;
     padding-top: 4.3rem;
   }
 

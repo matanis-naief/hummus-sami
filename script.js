@@ -11,7 +11,7 @@ const content = {
     header: {
       slogan: "ממכר כמה שזה טעים",
       menuOpen: "תפריט",
-      menuClose: "סגירה"
+        p3: "والآن تسألون: من هو سامي؟ سامي هو والد نايف، وهو الجيل الثاني لعائلة تعمل في الحمص منذ عام 1969."
     },
     lang: { label: "שפה" },
     brandTitle: "חומוסיית סמי",
@@ -129,7 +129,7 @@ const content = {
     header: {
       slogan: "So delicious, it’s addictive",
       menuOpen: "Menu",
-      menuClose: "Close"
+        title: "نكهات سامي",
     },
     lang: { label: "Language" },
     brandTitle: "Hummus Sami",
@@ -247,7 +247,7 @@ const content = {
     header: {
       slogan: "لذيذ لدرجة الإدمان",
       menuOpen: "القائمة",
-      menuClose: "إغلاق"
+        title: "بانتظاركم في حمص سامي",
     },
     lang: { label: "اللغة" },
     brandTitle: "حمص سامي",
@@ -345,8 +345,8 @@ const content = {
         { name: "حمص مع دجاج وفطر وبصل", description: "حمص مع دجاج وفطر وبصل.", price: "₪52" },
         { name: "طبق مسبحة", description: "طبق خاص بنكهة غنية.", price: "₪30" },
         { name: "طبق فول", description: "طبق فول مع توابل.", price: "₪30" },
-        { name: "شكشوكة سمي", description: "الشكشوكة المميزة لسمي.", price: "₪51" },
-        { name: "حمشكوكة سمي", description: "طبق حمص شكشوكة مميز.", price: "₪51" }
+        { name: "شكشوكة سامي", description: "الشكشوكة المميزة لسامي.", price: "₪51" },
+        { name: "حمشكوكة سامي", description: "طبق حمص شكشوكة مميز.", price: "₪51" }
       ],
       sides: [
         { name: "سلطة صغيرة", description: "سلطة خفيفة ومنعشة.", price: "₪24" },
@@ -365,7 +365,7 @@ const content = {
     header: {
       slogan: "Настолько вкусно, что невозможно остановиться",
       menuOpen: "Меню",
-      menuClose: "Закрыть"
+        copyright: "حمص سامي. جميع الحقوق محفوظة.",
     },
     lang: { label: "Язык" },
     brandTitle: "Hummus Sami",
