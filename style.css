@@ -309,42 +309,38 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  font-size: 0.76rem;
-  line-height: 1.3;
+  gap: 0.32rem;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
   color: rgba(242, 236, 223, 0.64);
-  opacity: 0.72;
-  padding-top: 0.42rem;
-  margin-top: 0.15rem;
+  opacity: 0.6;
+  padding-top: 0.38rem;
+  margin-top: 8px;
+  margin-bottom: 4px;
   border-top: 1px solid rgba(209, 195, 165, 0.24);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.4px;
   white-space: nowrap;
   pointer-events: none;
   transition: opacity 0.2s ease;
 }
 
 .dev-credit-icon {
-  width: 15px;
-  height: 15px;
+  width: 11px;
+  height: 11px;
   color: var(--olive);
   display: inline-grid;
   place-items: center;
-  transition: transform 0.2s ease;
 }
 
 .dev-credit-icon svg {
-  width: 15px;
-  height: 15px;
+  width: 11px;
+  height: 11px;
 }
 
 .main-nav:hover .nav-dev-credit,
 .main-nav:focus-within .nav-dev-credit {
   opacity: 0.9;
-}
-
-.main-nav:hover .nav-dev-credit .dev-credit-icon,
-.main-nav:focus-within .nav-dev-credit .dev-credit-icon {
-  transform: scale(1.07);
 }
 
 .menu-toggle {
@@ -1629,19 +1625,21 @@ footer {
 
 .footer-dev-credit {
   width: min(100%, var(--container-max));
-  margin: 0.35rem auto 0;
-  padding: 0.62rem 1rem 0;
+  margin: 8px auto 4px;
+  padding: 0.38rem 1rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.32rem;
   color: rgba(235, 229, 216, 0.72);
-  font-size: 0.78rem;
-  line-height: 1.35;
-  letter-spacing: 0.01em;
-  opacity: 0.78;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+  opacity: 0.6;
   text-align: center;
+  white-space: nowrap;
   transition: opacity 0.2s ease;
 }
 
@@ -1650,11 +1648,7 @@ footer {
 }
 
 .footer-dev-credit:hover {
-  opacity: 0.94;
-}
-
-.footer-dev-credit:hover .dev-credit-icon {
-  transform: scale(1.08);
+  opacity: 0.9;
 }
 
 .reveal {
@@ -1911,11 +1905,16 @@ body.is-loaded .menu-toggle {
   }
 
   .main-nav .nav-dev-credit {
-    margin-top: 0;
-    padding: 0.64rem 1rem 0.76rem;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    padding: 0.45rem 1rem 0.45rem;
     color: rgba(56, 64, 40, 0.68);
     border-top: 1px solid rgba(88, 99, 59, 0.16);
-    font-size: 0.74rem;
+    font-size: 9.5px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+    opacity: 0.6;
     white-space: normal;
   }
 
@@ -2011,8 +2010,23 @@ body.is-loaded .menu-toggle {
     font-size: clamp(0.9rem, 0.88vw, 1rem);
   }
 
-  .main-nav .nav-dev-credit {
-    font-size: 0.7rem;
+}
+
+@media (max-width: 1024px) {
+  .main-nav .nav-dev-credit,
+  .footer-dev-credit {
+    font-size: 9.5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-nav .nav-dev-credit,
+  .footer-dev-credit {
+    font-size: 9px;
+  }
+
+  .footer-dev-credit {
+    white-space: normal;
   }
 
   .site-header .header-scroll-text,
