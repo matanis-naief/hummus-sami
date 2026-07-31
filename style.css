@@ -147,7 +147,9 @@ footer {
   border-radius: 999px;
   border: 2px solid rgba(88, 99, 59, 0.2);
   border-top-color: rgba(88, 99, 59, 0.75);
-  animation: spinner 0.9s linear infinite;
+  animation: loaderSpin 0.9s linear infinite;
+  transform-origin: center;
+  will-change: transform;
 }
 
 .site-loader p {
@@ -2235,9 +2237,15 @@ body.is-loaded .menu-toggle {
   }
 }
 
-@keyframes spinner {
+@keyframes loaderSpin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader-spinner {
+    animation-duration: 1.8s;
   }
 }
 
